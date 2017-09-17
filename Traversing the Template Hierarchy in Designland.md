@@ -68,10 +68,57 @@ Template Name: Full Width (No Sidebar)
 <?php get_footer(); ?>
 ```
 
-As we can see we'll need to specify a **Template Name:**, This template name can be whatever your ❤️ desires. Though again like before when naming the file, I suggest you be somewhat specific to the use of the template.
+As we can see we'll need to specify a **Template Name:**, this template name can be whatever your ❤️ desires. Though again like before when naming the file, I suggest you be somewhat specific to the use of the template.
 
 Okay, okay I know you really want to learn how does this help us create our designs into custom page templates. Well since we have this set up we can also set up a template for a side bar.
 
 ![Okay, okay](https://media.giphy.com/media/10pR6dUXHBpZSg/giphy.gif)
 
-So we can do one of two things. We can use a sidebar template and write an if statement, or we can use our `right-sidebar.php` template.
+So we can do one of two things.
+* We can build a sidebar template and use the built in WordPress widget area.
+	- In going this direction we'll need to write an if statement.
+
+**OR**
+* We can use our `right-sidebar.php` template.
+
+I'm going to show you with our current template. Let's look at what this template should look like.
+
+```
+<?php
+/*
+Template Name: Right Sidebar
+*/
+?>
+
+<?php get_header(); ?>
+
+	<div id="content">
+
+		<div id="inner-content" class="row">
+
+		    <main id="main" class="large-8 medium-8 columns" role="main">
+
+				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+					<!-- Here is our loop -->
+			    	<?php get_template_part( 'parts/loop', 'page' ); ?>
+
+			    <?php endwhile; endif; ?>
+
+			</main> <!-- end #main -->
+
+			<!-- This is our sidebar, but where's the html??? -->
+			<?php get_template_part( 'parts/sidebar.php' ); ?>
+
+		</div> <!-- end #inner-content -->
+
+	</div> <!-- end #content -->
+
+<?php get_footer(); ?>
+```
+
+This is our sidebar call `<?php get_template_part( 'parts/sidebar.php' ); ?>`.
+
+![Say What?](https://media.giphy.com/media/xTkcEId8z20sPCMlK8/giphy.gif)
+
+**Wait!** This doesn't look like a full sidebar though does it? That's because we're making a call to another template piece. This is where we can break items down into modular pieces, this is especially useful when creating pieces that are reusable.
