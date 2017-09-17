@@ -206,3 +206,6 @@ I'm calling several pieces located in a folder/directory called `template-parts`
 ### Some other tools to add to you arsenal
 
 ![New tools!](https://media.giphy.com/media/IelxugxenjdyU/giphy.gif)
+
+* Custom Post Types
+* ACF or CMB2
