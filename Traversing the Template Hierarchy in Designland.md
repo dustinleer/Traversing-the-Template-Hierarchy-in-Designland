@@ -27,6 +27,6 @@ Let's start with discussing some basics.
 
 Learning the what template file to use is a very important skill as a WordPress Designer/Developer. This skill will truely empower you to create custom layouts without the "need" for theme builders!
 
-[!Everyone rejoice](https://media.giphy.com/media/DKnMqdm9i980E/giphy.gif)
+![Everyone rejoice](https://media.giphy.com/media/DKnMqdm9i980E/giphy.gif)
 
 Ok, now since we've covered some basics on this let's talk about how this can help you as a designer!
