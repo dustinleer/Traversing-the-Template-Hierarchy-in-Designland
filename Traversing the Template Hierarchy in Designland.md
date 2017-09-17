@@ -33,6 +33,10 @@ A great example is if you would want to make a two different pages. One with a s
 
 Using **The Template Hierarchy** you can create a seperate template for both. We could name them `full-width.php` and `right-sidebar.php`. You can actually name them however you like, but I would suggest being specific about the functionality of what the page is supposed to be used for.
 
+---
+
+### Digging into our templates
+
 With in these templates we can break them done in a modular fashion. But before we would do that we need to set the internal references for WordPress to recognize these templates.
 
 Let's open `full-page.php`. A default full page template for a starter theme that I sometimes use, it looks like this.
@@ -69,6 +73,10 @@ Template Name: Full Width (No Sidebar)
 ```
 
 As we can see we'll need to specify a **Template Name:**, this template name can be whatever your ❤️ desires. Though again like before when naming the file, I suggest you be somewhat specific to the use of the template.
+
+---
+
+### Oh right we had a sidebar template didn't we? 🤣 🤣 🤣
 
 Okay, okay I know you really want to learn how does this help us create our designs into custom page templates. Well since we have this set up we can also set up a template for a side bar.
 
@@ -122,3 +130,5 @@ This is our sidebar call `<?php get_template_part( 'parts/sidebar.php' ); ?>`.
 ![Say What?](https://media.giphy.com/media/xTkcEId8z20sPCMlK8/giphy.gif)
 
 **Wait!** This doesn't look like a full sidebar though does it? That's because we're making a call to another template piece. This is where we can break items down into modular pieces, this is especially useful when creating pieces that are reusable.
+
+Alright so we need to discuss where this `sidebar.php` template part is, it is located in a folder/directory called `parts`. This can be done with lots of reusable pieces for our sites. I personally like to leverage this, functionality. We can also have a `parts` folder/directory with multiple sub-folders/sub-directories. This can allow for a more granular breakdown in our modules and thier functionality.
