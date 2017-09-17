@@ -38,31 +38,31 @@ With in these templates we can break them done in a modular fashion. But before 
 Let's open `full-page.php`. A default full page template for Twenty Seventeen looks like this.
 
 ```
-	<?php
-	/*
-	Template Name: Full Width (No Sidebar)
-	*/
-	?>
+<?php
+/*
+Template Name: Full Width (No Sidebar)
+*/
+?>
 
-	<?php get_header(); ?>
+<?php get_header(); ?>
 
-		<div id="content">
+	<div id="content">
 
-			<div id="inner-content" class="row">
+		<div id="inner-content" class="row">
 
-			    <main id="main" class="large-12 medium-12 columns" role="main">
+		    <main id="main" class="large-12 medium-12 columns" role="main">
 
-					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-						<?php get_template_part( 'parts/loop', 'page' ); ?>
+					<?php get_template_part( 'parts/loop', 'page' ); ?>
 
-					<?php endwhile; endif; ?>
+				<?php endwhile; endif; ?>
 
-				</main> <!-- end #main -->
+			</main> <!-- end #main -->
 
-			</div> <!-- end #inner-content -->
+		</div> <!-- end #inner-content -->
 
-		</div> <!-- end #content -->
+	</div> <!-- end #content -->
 
-	<?php get_footer(); ?>
+<?php get_footer(); ?>
 ```
