@@ -67,4 +67,4 @@ Template Name: Full Width (No Sidebar)
 <?php get_footer(); ?>
 ```
 
-As we can see we'll need to specify a **Template Nme:**, This template name can be whatever your ❤️ desires. Though again liek before when naming the file, I suggest you be somewhat specific to the use of the template.
+As we can see we'll need to specify a **Template Nme:**, This template name can be whatever your ❤️ desires. Though again like before when naming the file, I suggest you be somewhat specific to the use of the template.
