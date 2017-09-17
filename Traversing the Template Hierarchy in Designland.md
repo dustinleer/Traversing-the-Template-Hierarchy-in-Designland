@@ -23,4 +23,12 @@ Learning the what template file to use is a very important skill as a WordPress 
 
 ![Everyone rejoice](https://media.giphy.com/media/DKnMqdm9i980E/giphy.gif)
 
+---
+
 Ok, now since we've covered some basics on this let's talk about how this can help you as a designer!
+
+Templates can really help create modularity in your theme.
+
+A great example is if you would want to make a two different pages. One with a sidebar and one without, I know that's crazy right?
+
+Using **The Template Hierarchy** you can create a seperate template for both. We could name them `full-width.php` and `right-sidebar.php`. You can actually name them however you like, but I would suggest being specific about the functionality of what the page is supposed to be used for.
