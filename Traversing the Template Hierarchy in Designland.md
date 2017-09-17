@@ -215,7 +215,7 @@ I'm calling several pieces located in a folder/directory called `template-parts`
 
 ---
 
-## Back to our Right Sidebar template and Sidebar template part
+### Back to our Right Sidebar template and Sidebar template part
 
 Ok, so we've already checked out what this `right-sidebar.php` template looks like. But wer had that section calling the template part for the actual side bar. Let's open that up and discuss it.
 
