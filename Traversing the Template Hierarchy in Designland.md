@@ -35,7 +35,7 @@ Using **The Template Hierarchy** you can create a seperate template for both. We
 
 With in these templates we can break them done in a modular fashion. But before we would do that we need to set the internal references for WordPress to recognize these templates.
 
-Let's open `full-page.php`. A default full page template for Twenty Seventeen looks like this.
+Let's open `full-page.php`. A default full page template for a starter theme that I sometimes use, it looks like this.
 
 ```
 <?php
@@ -66,3 +66,5 @@ Template Name: Full Width (No Sidebar)
 
 <?php get_footer(); ?>
 ```
+
+As we can see we'll need to specify a **Template Nme:**, This template name can be whatever your ❤️ desires. Though again liek before when naming the file, I suggest you be somewhat specific to the use of the template.
