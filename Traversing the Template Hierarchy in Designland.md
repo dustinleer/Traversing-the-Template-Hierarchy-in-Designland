@@ -54,6 +54,7 @@ Template Name: Full Width (No Sidebar)
 
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
+					<!-- Here is our loop -->
 					<?php get_template_part( 'parts/loop', 'page' ); ?>
 
 				<?php endwhile; endif; ?>
@@ -67,4 +68,10 @@ Template Name: Full Width (No Sidebar)
 <?php get_footer(); ?>
 ```
 
-As we can see we'll need to specify a **Template Nme:**, This template name can be whatever your ❤️ desires. Though again like before when naming the file, I suggest you be somewhat specific to the use of the template.
+As we can see we'll need to specify a **Template Name:**, This template name can be whatever your ❤️ desires. Though again like before when naming the file, I suggest you be somewhat specific to the use of the template.
+
+Okay, okay I know you really want to learn how does this help us create our designs into custom page templates. Well since we have this set up we can also set up a template for a side bar.
+
+![Okay, okay](https://media.giphy.com/media/10pR6dUXHBpZSg/giphy.gif)
+
+So we can do one of two things. We can use a sidebar template and write an if statement, or we can use our `right-sidebar.php` template.
