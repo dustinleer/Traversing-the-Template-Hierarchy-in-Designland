@@ -22,6 +22,18 @@ Let's start with discussing some basics.
 		- `category.php` - Controls category archive pages
 		- `tag.php` - Controls tag archive pages
 
+### Fallback Architecture
+
+**Fallback Architecture** means id a certain template is not found, WordPress will look for through a series of backup templates to load instead.
+
+```
+page.php
+	↓
+singular.php
+	↓
+index.php
+```
+
 Learning the what template file to use is a very important skill as a WordPress Designer/Developer. This skill will truely empower you to create custom layouts without the "need" for theme builders!
 
 ![Everyone rejoice](https://media.giphy.com/media/DKnMqdm9i980E/giphy.gif)
