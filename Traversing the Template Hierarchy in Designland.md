@@ -17,7 +17,7 @@ Let's start with discussing some basics.
 		- `page.php` - Controls how single pages are displayed
 		- `single.php` - Controls how single blog posts are displayed
 		- `category.php` - Controls category archive pages
-		- `tag.php` - Controlstag archive pages
+		- `tag.php` - Controls tag archive pages
 
 Learning the what template file to use is a very important skill as a WordPress Designer/Developer. This skill will truely empower you to create custom layouts without the "need" for theme builders!
 
