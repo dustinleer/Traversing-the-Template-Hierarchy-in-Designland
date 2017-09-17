@@ -2,6 +2,9 @@
 
 Today I'll be speaking about WordPress' template hierarchy and how to leverage it for our designs and how to make our builds modular, using the built in template structure.
 
+
+### Some WordPress Template basics
+
 Let's start with discussing some basics.
 
 * What do I mean when, I use the word "Template"?
@@ -24,6 +27,10 @@ Learning the what template file to use is a very important skill as a WordPress 
 ![Everyone rejoice](https://media.giphy.com/media/DKnMqdm9i980E/giphy.gif)
 
 ---
+
+### Well how can I use this?
+
+![Questioning](https://media.giphy.com/media/26gR0YFZxWbnUPtMA/giphy.gif)
 
 Ok, now since we've covered some basics on this let's talk about how this can help you as a designer!
 
@@ -132,3 +139,70 @@ This is our sidebar call `<?php get_template_part( 'parts/sidebar.php' ); ?>`.
 **Wait!** This doesn't look like a full sidebar though does it? That's because we're making a call to another template piece. This is where we can break items down into modular pieces, this is especially useful when creating pieces that are reusable.
 
 Alright so we need to discuss where this `sidebar.php` template part is, it is located in a folder/directory called `parts`. This can be done with lots of reusable pieces for our sites. I personally like to leverage this, functionality. We can also have a `parts` folder/directory with multiple sub-folders/sub-directories. This can allow for a more granular breakdown in our modules and thier functionality.
+
+Let's look at an example from a build I did previously. This is a `single.php` template.
+
+```
+<?php
+/**
+ * The template for displaying all single posts.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
+ */
+
+get_header(); ?>
+
+<?php if( get_template_part('template-parts/hero_single') ): ?>
+	<?php get_template_part( 'template-parts/hero_single' ) ?>
+<?php endif; ?>
+
+	<section class="page_content">
+		<div class="wrap">
+			<div id="primary" class="content-area two-thirds">
+				<?php
+				while ( have_posts() ) : the_post();
+
+					get_template_part( 'template-parts/content', get_post_format() );
+
+					?>
+
+					<?php
+					// If comments are open or we have at least one comment, load up the comment template.
+					if ( comments_open() || get_comments_number() ) :
+						comments_template();
+					endif;
+
+				endwhile; // End of the loop.
+				?>
+			</div>
+			<?php get_sidebar(); ?>
+		</div>
+	</section>
+
+
+<?php if( get_template_part('template-parts/recent-posts-extended') ): ?>
+	<?php get_template_part( 'template-parts/recent-posts-extended' ) ?>
+<?php endif; ?>
+
+<?php get_footer(); ?>
+```
+
+I'm calling several pieces located in a folder/directory called `template-parts`.
+
+[Example from Paradox Labs Single Post Page](https://www.paradoxlabs.com/blog/google-chrome-require-sitewide-ssl/)
+
+**Examples**
+* `<?php get_template_part( 'template-parts/hero_single' ) ?>`
+	- I'm calling a hero image template
+* `get_template_part( 'template-parts/content', get_post_format() );`
+	- This is our loop reference, it's in a template called `content.php`
+* `<?php get_template_part( 'template-parts/recent-posts-extended' ) ?>`
+	- This is calling a template that is built out to show recent posts, that is used befor the footer on multiple pages!
+	- Again reusing **code** can be extremely useful and helpful. Especially in an instance like this.
+
+---
+
+### Some other tools to add to you arsenal
+
+![New tools!](https://media.giphy.com/media/IelxugxenjdyU/giphy.gif)
