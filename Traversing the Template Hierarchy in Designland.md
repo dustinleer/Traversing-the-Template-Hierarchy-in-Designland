@@ -37,7 +37,8 @@ With in these templates we can break them done in a modular fashion. But before 
 
 Let's open `full-page.php`. A default full page template for Twenty Seventeen looks like this.
 
-```<?php
+```
+	<?php
 	/*
 	Template Name: Full Width (No Sidebar)
 	*/
@@ -63,4 +64,5 @@ Let's open `full-page.php`. A default full page template for Twenty Seventeen lo
 
 		</div> <!-- end #content -->
 
-<?php get_footer(); ?>```
+	<?php get_footer(); ?>
+```
