@@ -1,11 +1,5 @@
 # Traversing the Template Hierarchy in Designland
 
----
-
-Learn about WordPress' template system so you won’t be bound by just a page builder plugin. With this' we will unleash the power that is locked in the template system and learn to build on WordPress' built in template structure!
-
----
-
 Today I'll be speaking about WordPress' template hierarchy and how to leverage it for our designs and how to make our builds modular, using the built in template structure.
 
 Let's start with discussing some basics.
