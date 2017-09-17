@@ -215,6 +215,45 @@ I'm calling several pieces located in a folder/directory called `template-parts`
 
 ---
 
+## Back to our Right Sidebar template and Sidebar template part
+
+Ok, so we've already checked out what this `right-sidebar.php` template looks like. But wer had that section calling the template part for the actual side bar. Let's open that up and discuss it.
+
+```
+<?php
+/**
+ * Template part for displaying a sidebar nav
+ */
+?>
+<div id="sidebar1" class="sidebar large-4 medium-4 columns" role="complementary">
+
+	<div class="grid-6 sub_interior_nav">
+		<?php
+			$defaults = wp_nav_menu( array(
+                'theme_location' => 'sub_interior_nav',
+                'container' => false,
+                'items_wrap' => '%3$s',
+                'echo' => false,
+                'depth' => 0
+            ) );
+
+            $find = array('><a','li');
+            $replace = array('><a','div');
+            echo str_replace( $find, $replace, $defaults );
+		?>
+	</div>
+
+</div>
+```
+
+This is a really basice sidebar. All we are doing is inserting a nav area into our page, but we could do other things two. Generally I would build a side bar like this, unless I really didn't want the client to mess with things in it too much. Though the menu items could still be changed by a client in this example. It would just always be a menu. This is just ot give you an example of something you can do.
+
+You could do call to actions, custom profiles using custom postypes and all kinds of other things as well.
+
+I've also used the template heirarchy to create a portfolio, leveraging custom post types, templates and template parts.
+
+---
+
 ### Some other tools to add to you arsenal
 
 ![New tools!](https://media.giphy.com/media/IelxugxenjdyU/giphy.gif)
