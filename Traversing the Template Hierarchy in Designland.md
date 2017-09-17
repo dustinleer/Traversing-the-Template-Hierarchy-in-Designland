@@ -32,3 +32,35 @@ Templates can really help create modularity in your theme.
 A great example is if you would want to make a two different pages. One with a sidebar and one without, I know that's crazy right?
 
 Using **The Template Hierarchy** you can create a seperate template for both. We could name them `full-width.php` and `right-sidebar.php`. You can actually name them however you like, but I would suggest being specific about the functionality of what the page is supposed to be used for.
+
+With in these templates we can break them done in a modular fashion. But before we would do that we need to set the internal references for WordPress to recognize these templates.
+
+Let's open `full-page.php`. A default full page template for Twenty Seventeen looks like this.
+
+```<?php
+	/*
+	Template Name: Full Width (No Sidebar)
+	*/
+	?>
+
+	<?php get_header(); ?>
+
+		<div id="content">
+
+			<div id="inner-content" class="row">
+
+			    <main id="main" class="large-12 medium-12 columns" role="main">
+
+					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+						<?php get_template_part( 'parts/loop', 'page' ); ?>
+
+					<?php endwhile; endif; ?>
+
+				</main> <!-- end #main -->
+
+			</div> <!-- end #inner-content -->
+
+		</div> <!-- end #content -->
+
+<?php get_footer(); ?>```
