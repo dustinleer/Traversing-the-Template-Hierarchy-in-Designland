@@ -72,7 +72,7 @@ As we can see we'll need to specify a **Template Name:**, this template name can
 
 Okay, okay I know you really want to learn how does this help us create our designs into custom page templates. Well since we have this set up we can also set up a template for a side bar.
 
-![Okay, okay](https://media.giphy.com/media/10pR6dUXHBpZSg/giphy.gif)
+![Okay, okay](https://media.giphy.com/media/13M0GBv7MsKV2g/giphy.gif)
 
 So we can do one of two things.
 * We can build a sidebar template and use the built in WordPress widget area.
