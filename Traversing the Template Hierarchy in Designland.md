@@ -28,9 +28,9 @@ Let's start with discussing some basics.
 
 ```
 page.php
-	↓
+   ↓
 singular.php
-	↓
+   ↓
 index.php
 ```
 
