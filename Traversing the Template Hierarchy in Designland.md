@@ -34,6 +34,12 @@ singular.php
 index.php
 ```
 
+### Overrides
+
+You can override templates with other templates. Such as you can overrride `archive.php` & `category.php` with files like `archive-cool.php` & `category-awesome.php`.
+
+But I'll talk about this in a little greater detail further into our example.
+
 Learning the what template file to use is a very important skill as a WordPress Designer/Developer. This skill will truely empower you to create custom layouts without the "need" for theme builders!
 
 ![Everyone rejoice](https://media.giphy.com/media/DKnMqdm9i980E/giphy.gif)
@@ -261,4 +267,6 @@ I've also used the template heirarchy to create a portfolio, leveraging custom p
 ![New tools!](https://media.giphy.com/media/IelxugxenjdyU/giphy.gif)
 
 * Custom Post Types
+	- These are extremely powerful and will help you in your journey
 * ACF or CMB2
+	- Again super helpful, you can create awesome things with these powerful plugins
