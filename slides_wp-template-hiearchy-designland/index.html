@@ -1,0 +1,1971 @@
+<!DOCTYPE html>
+	<html class="sl-root decks export offline loaded">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Traversing the Template Hierarchy in Designland: Slides</title>
+		<meta name="description" content="Slides">
+
+		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
+
+
+
+	</head>
+	<body class="reveal-viewport theme-font-montserrat theme-color-black-blue">
+		<div class="reveal">
+			<div class="slides">
+				<section data-id="b8d5c3d14e29fcca335f92a4d652ea09" data-background-color="#ff0046"><div class="sl-block" data-block-type="text" style="width: 832px; left: 64px; top: 118px; height: auto;" data-block-id="eeaa005e2fed9672fabfb4ff05a9599e">
+    <div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 13; color: rgb(255, 255, 255);" data-has-custom-html="">
+<h1><span style="font-size:1.0em;"><span style="color:#FFFFFF"><strong>Traversing the Template Hierarchy in Designland</strong> </span> </span></h1>
+</div>
+</div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 560px;" data-block-id="44618d802f9be3524d3387410e9bdd20">
+    <div class="sl-block-style" style="z-index: 14; opacity: 0.9;">
+        <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255); line-height: 1.196;" data-has-custom-html="" data-has-line-height="">
+<p><span style="font-size:1.0em; line-height: 1.25em;"><a href="http://dustinleer.com" style="color:#fff;" target="_blank">Dustin Leer</a> </span><br>
+<span style="font-size:0.7em; line-height: 1em; color:#fff;">Front End Developer, Synapse Marketing</span><br>
+<strong><span style="font-size:0.7em; line-height: 1em;"><a href="https://twitter.com/leerdustin" style="color:#fff;" target="_blank">@leerdustin</a> </span> </strong></p>
+</div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" data-block-id="4f9bfd77ff54359c718445f97c4344bf" style="min-width: 30px; min-height: 30px; width: 1485px; height: 1019px; left: 738px; top: -586px;">
+    <div class="sl-block-style" style="z-index: 12; opacity: 0.3;">
+        <div class="sl-block-content" style="z-index: 12;" data-inline-svg="false">
+            <img data-natural-width="1329" data-natural-height="912" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/b407c9838e6dcc4e0455eb1f2507dcd0.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" data-block-id="edddb8419e03f1156d0a6dd110c338e1" style="min-width: 30px; min-height: 30px; width: 1215px; height: 1207px; left: -846px; top: 165px;">
+    <div class="sl-block-style" style="z-index: 11; opacity: 0.3;">
+        <div class="sl-block-content" style="z-index: 11;">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/780be31697e0f1fe5615ea70b20ebd72.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 394px; top: 489px;" data-block-id="d61bc72dce1e4d52f48c199c9bc9d470"><div class="sl-block-content" data-line-x1="28" data-line-y1="0" data-line-x2="200" data-line-y2="0" data-line-color="#45103e" data-line-start-type="none" data-line-end-type="none" style="z-index: 15;" data-line-width="10px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="172" height="1" viewbox="28 0 172 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="28" y1="0" x2="200" y2="0"></line><line stroke="#45103e" stroke-width="10" x1="28" y1="0" x2="200" y2="0"></line></svg></div></div></section><section data-background-color="#ff0046" data-id="b9b1abd7485e3e9e614dac6b03209659"><div class="sl-block" data-block-type="text" style="width: 374px; left: 26px; top: 22px; height: auto;" data-block-id="72ff4a51509fb1ec28a1e00ef064d527">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 13; color: rgb(255, 255, 255);" dir="ui">
+<h1><strong>Who am I</strong></h1>
+</div>
+</div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 423px; left: 26px; top: 229px;" data-block-id="4df244066c736771291088ee01283be1">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255); text-align: center;" data-has-custom-html="">
+<h2 style="text-align: left;"><span style="font-size:0.9em;"><strong>Dustin Leer</strong></span></h2>
+
+<p style="text-align: left;"><span style="font-size:1.0em;">I started as a designer. I currently work primarily as a front end developer for Synapse Marketing Solutions in Lancaster, PA.</span></p>
+</div>
+</div>
+
+
+
+
+<div class="sl-block" data-block-type="line" data-block-id="f7104dc23e0da1baaf655fbe4afa595e" style="width: auto; height: auto; min-width: 1px; min-height: 1px; left: 26px; top: 182px;"><div class="sl-block-content" data-line-x1="28" data-line-y1="0" data-line-x2="200" data-line-y2="0" data-line-color="#45103e" data-line-start-type="none" data-line-end-type="none" style="z-index: 15;" data-line-width="10px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="172" height="1" viewbox="28 0 172 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="28" y1="0" x2="200" y2="0"></line><line stroke="#45103e" stroke-width="10" x1="28" y1="0" x2="200" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="d7e92b050a60c4f2e43306b0fb746e1a" style="min-width: 30px; min-height: 30px; width: 2076px; height: 2062px; left: -556px; top: -679.5px;"><div class="sl-block-style" style="z-index: 10; opacity: 0.2;"><div class="sl-block-content" style="z-index: 10;" data-inline-svg="false"><img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/780be31697e0f1fe5615ea70b20ebd72.svg"></div></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="baecec5a646fd49fef7d5250e8521546" style="min-width: 30px; min-height: 30px; width: 1106px; height: 878px; left: 124px; top: 22px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1427" data-natural-height="1133" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/458e57ce094ec3db43842cc4c3221b6c.png"></div></div></section><section data-background-color="#45103e" data-id="ec7c4394fb683731417c4adda2db1f42">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 895px; left: 33px; top: 144px; height: auto;" data-block-id="f2af45a2913bef8b10d7be37b9ee54c9">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11; color: rgb(255, 255, 255);">
+<h1><strong>Today’s talk will cover...</strong></h1>
+</div>
+</div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 904px; left: 29px; top: 277px;" data-block-id="49198aeb5a46ec29cb719f6ef659a33f">
+    <div class="sl-block-style" style="z-index: 13; transform: rotate(360deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(255, 255, 255); text-align: center;" data-has-custom-html="">
+<ul>
+	<li><span style="font-size:1.4em;">Child Themes</span></li>
+	<li><span style="font-size:1.4em;">Template Heirarchy</span></li>
+	<li><span style="font-size:1.4em;">Template &amp; CSS examples</span></li>
+	<li><span style="font-size:1.4em;">Animated gifs &amp; Dad jokes (sorry)</span></li>
+</ul>
+</div></div>
+</div>
+
+<div class="sl-block" data-block-type="image" data-block-id="22328639ac75dd6edf1a85c1f0817282" style="min-width: 30px; min-height: 30px; width: 1833px; height: 1139px; left: 430px; top: 349px;">
+    <div class="sl-block-style" style="z-index: 10; transform: rotate(35deg); opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 10;" data-inline-svg="false">
+            <img style="" data-natural-width="1259" data-natural-height="782" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/a7d733c37ee9d238c311e14d19a7a0fc.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" data-block-id="364224f5b9bbb6c49a022a7347231518" style="min-width: 30px; min-height: 30px; width: 982px; height: 975px; left: -872px; top: -625px;"><div class="sl-block-style" style="z-index: 14; opacity: 0.5;"><div class="sl-block-content" style="z-index: 14;" data-inline-svg="false"><img style="" data-natural-width="1767" data-natural-height="1755" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg"></div></div></div></section><section data-background-color="#45103e" data-id="ddcd344954dadcc28fe5b9ca7d29b44c">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 906px; left: 33px; top: 144px; height: auto;" data-block-id="86651362eedfcadc1416f2aea33b8c83">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11; color: rgb(255, 255, 255);">
+<h1><strong>Some WordPress Basics</strong></h1>
+</div>
+</div>
+
+
+<div class="sl-block" data-block-type="image" style="width: 1833px; height: 1139px; left: 430px; top: 349px;" data-block-id="ad24d27ed3e030992fe31a69fe449b46">
+    <div class="sl-block-style" style="z-index: 10; transform: rotate(35deg); opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 10;" data-inline-svg="false">
+            <img style="" data-natural-width="1259" data-natural-height="782" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/a7d733c37ee9d238c311e14d19a7a0fc.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="width: 982px; height: 975px; left: -872px; top: -625px;" data-block-id="d84c252f499e002d5d95130e3aec7137"><div class="sl-block-style" style="z-index: 15; opacity: 0.5;"><div class="sl-block-content" style="z-index: 15;" data-inline-svg="false"><img style="" data-natural-width="1767" data-natural-height="1755" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg"></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 890px; left: 33px; top: 277px;" data-block-id="beba9e7d6743106ef988caec83d73c9e">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; color: rgb(255, 255, 255); text-align: center;" data-has-custom-html="" dir="ui">
+<h2 style="text-align: left;"><strong><span>Child Theme?</span></strong></h2>
+
+<p style="text-align: left;"><span><strong>A Child Theme</strong> </span>allows you to change aspects of your site’s appearance yet still preserve your theme’s look and functionality.</p>
+</div>
+</div></section><section data-background-color="#45103e" data-id="632cb4fe0f17903ecb04058080747c36">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 1833px; height: 1139px; left: 430px; top: 349px;" data-block-id="185b4dba8d59f01a0e764d981d8aadcb">
+    <div class="sl-block-style" style="z-index: 10; transform: rotate(35deg); opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 10;" data-inline-svg="false">
+            <img style="" data-natural-width="1259" data-natural-height="782" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/a7d733c37ee9d238c311e14d19a7a0fc.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="width: 982px; height: 975px; left: -872px; top: -625px;" data-block-id="6eb7257e326382fc4693b053b2966c24">
+    <div class="sl-block-style" style="z-index: 12; opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 12;" data-inline-svg="false">
+            <img style="" data-natural-width="1767" data-natural-height="1755" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="width: 906px; left: 33px; top: 144px; height: auto;" data-block-id="377ab634d4b1412e57c6a2e94832c3dd">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 14; color: rgb(255, 255, 255);">
+        <h1>
+            <strong>Some WordPress Basics</strong>
+        </h1>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 890px; left: 33px; top: 277px;" data-block-id="deb1291e64616d85868dc5df1c43ef2b">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; color: rgb(255, 255, 255); text-align: center; background-color: rgba(0, 0, 0, 0);" data-has-custom-html="" dir="ui">
+<h2 style="text-align: left;"><strong><span>Template?</span> </strong></h2>
+
+<p style="text-align: left;"><span style='color: rgb(255, 255, 255); font-family: "Open Sans", sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; text-align: left;'><b>A Template </b></span><span style='color: rgb(255, 255, 255); font-family: "Open Sans", sans-serif;  font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; text-align: left;'>in WordPress is a PHP file that determines how content is displayed.</span></p>
+</div>
+</div></section><section data-background-color="#45103e" data-id="cbdc2f65d1db6924279ce1f707d5785f">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 908px; left: 29px; top: 140px; height: auto;" data-block-id="99c34779743f1cbb1efa2df200689d39"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10; color: rgb(255, 255, 255);">
+<h1><strong>How can we leverage child themes?</strong></h1>
+</div></div>
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 896px; left: 29px; top: 350px;" data-block-id="d36ddb0954a225a9e8e132cab786748f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(255, 255, 255); text-align: center;" data-has-custom-html="">
+<h3 style="text-align: left;"><span style="font-size: 46.8px;"><b>Theme Handbook</b></span></h3>
+
+<ul>
+	<li><span style="font-size:1.2em;">developer.wordpress.org/themes/advanced-topics/child-themes</span></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="84ab1ce409bc100a33d6c7285b3c905d" style="min-width: 30px; min-height: 30px; width: 3642px; height: 748px; left: -1341px; top: 630px;"><div class="sl-block-style" style="z-index: 12; opacity: 0.5;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="3584" data-natural-height="736" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/ce493e46c552a1c201b498e3856f09c3.svg"></div></div></div></section><section data-background-color="#45103e" data-id="8054bb6349c99164987b7f90fdf6aa7c">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 896px; left: 29px; top: 350px;" data-block-id="d65a49f069bc4b67c44456b7e7f84087"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(255, 255, 255); text-align: center;" data-has-custom-html="">
+<h3 style="text-align: left;"><span style="font-size:1.2em;"><b>Template </b><span style="text-align: center;"><b>Hierarchy</b></span></span></h3>
+
+<ul>
+	<li><span style="font-size:1.2em;">wphierarchy.com</span></li>
+	<li><span style="font-size:1.2em;">developer.wordpress.org/themes/basics/template-hierarchy</span></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 3642px; height: 748px; left: -1341px; top: 630px;" data-block-id="36655ffadb3c3e9a247c9dc6a6f986fd"><div class="sl-block-style" style="z-index: 12; opacity: 0.5;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="3584" data-natural-height="736" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/ce493e46c552a1c201b498e3856f09c3.svg"></div></div></div>
+<div class="sl-block" data-block-type="text" style="width: 908px; left: 29px; top: 140px; height: auto;" data-block-id="82f1c3ef3f9fef493bc7e67a80244cea"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11; color: rgb(255, 255, 255);">
+<h1><strong>How can we leverage templates?</strong></h1>
+</div></div></section><section data-background-color="#ff0046" data-id="c30907b0eb36e450d648a3e36b977a2a">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 52px; height: auto;" data-block-id="6400a3b297c71b9e0e6a057117f99e59"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 13; color: rgb(255, 255, 255);">
+<h1 style="text-align: center;"><span style="font-size:1.0em"><strong>I have some examples!</strong></span></h1>
+</div></div>
+
+
+
+<div class="sl-block" data-block-type="image" data-block-id="55205a1128a2bf53c8258f188f73f11d" style="min-width: 30px; min-height: 30px; width: 1701px; height: 1167px; left: 44px; top: -677px;"><div class="sl-block-style" style="z-index: 12; opacity: 0.1;"><div class="sl-block-content" style="z-index: 12;" data-inline-svg="false"><img data-natural-width="1329" data-natural-height="912" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/fcd87c72243e2bba45691703100a3446.svg"></div></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="effe50a56285eeec3b7fb4a02372fa55" style="min-width: 30px; min-height: 30px; width: 1452px; height: 1442px; left: -744px; top: 434px;"><div class="sl-block-style" style="z-index: 11; opacity: 0.1;"><div class="sl-block-content" style="z-index: 11;" data-inline-svg="false"><img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg"></div></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="f54738e5077bdd6534672a6f71615c89" style="min-width: 30px; min-height: 30px; width: 513px; height: 513px; left: 224px; top: 164px;"><div class="sl-block-content" style="z-index: 14; border-style: solid; border-width: 5px; border-radius: 5px; border-color: rgb(69, 16, 62);"><img style="" data-natural-width="500" data-natural-height="500" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/92da9576589314b9cc1c9beafa12cac5.gif"></div></div></section><section data-background-color="#45103e" data-id="c434231bfacb62ac7878825d5839f245">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 27px; height: auto;" data-block-id="f8feb3b9b8566a73a6791e7903af648e">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 13; color: rgb(255, 255, 255);">
+        <h2 style="text-align:center">
+            <strong>The Examples!</strong>
+        </h2>
+    </div>
+</div>
+
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 905px; height: 26px; left: 28px; top: 129px;" data-block-id="38e4c6aa1cdf9b5f3e836d72a8521952">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(204, 204, 204)" data-shape-stretch="true" style="z-index: 15;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 905 26"><rect width="905" height="26" class="shape-element" fill="rgb(204, 204, 204)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 13px; height: 13px; left: 50px; top: 136px;" data-block-id="46a7efbda7812beb4a00be076a1e2442">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(204, 0, 0)" data-shape-stretch="true" style="z-index: 16;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(204, 0, 0)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 13px; height: 13px; left: 78px; top: 136px;" data-block-id="ed3cda51dfda93c51a4c2032d952d2c1">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(230, 145, 56)" data-shape-stretch="true" style="z-index: 17;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(230, 145, 56)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 13px; height: 13px; left: 106px; top: 136px;" data-block-id="39705d92406befb5952f6006f457cdb9">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(106, 168, 79)" data-shape-stretch="true" style="z-index: 18;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(106, 168, 79)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" data-block-id="052b2e6b37ad985b3ebc71f30287549a" style="min-width: 30px; min-height: 30px; width: 879px; height: 873px; left: -742px; top: -645px;"><div class="sl-block-style" style="z-index: 12; opacity: 0.5;"><div class="sl-block-content" style="z-index: 12;" data-inline-svg="false"><img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg"></div></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="ac26684b4eccf77cc3d48f867ce2111f" style="min-width: 30px; min-height: 30px; width: 806px; height: 801px; left: 1023px; top: 248px;"><div class="sl-block-style" style="z-index: 19; opacity: 0.5;"><div class="sl-block-content" style="z-index: 19;" data-inline-svg="false"><img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg"></div></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 279px; height: 50px; left: 28px; top: 155px;" data-block-id="e6d10ec713b4942a13e76cb46d9649cf">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(27, 28, 25)" data-shape-stretch="true" style="z-index: 20;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 279 50"><rect width="279" height="50" class="shape-element" fill="rgb(27, 28, 25)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 905px; height: 56px; left: 28px; top: 149px;" data-block-id="7537b4d521268cfc6443f88fff9e6a1d">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(39, 40, 35)" data-shape-stretch="true" style="z-index: 11;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 905 56"><rect width="905" height="56" class="shape-element" fill="rgb(39, 40, 35)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="width: 189px; left: 73px; top: 155px; height: auto;" data-block-id="905de4405fc8ad4278bbf4614604e742">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 21; color: rgb(255, 255, 255);">
+<p style="text-align:center"><strong><span style="font-size:0.7em">Examples.md</span></strong></p>
+</div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 279px; height: 4px; left: 28px; top: 201px;" data-block-id="15a0b09a44287aa9f29ffa0524217008">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(24, 137, 238)" data-shape-stretch="true" style="z-index: 22;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 279 4"><rect width="279" height="4" class="shape-element" fill="rgb(24, 137, 238)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="code" data-block-id="869d0400b182a9a4c793addacdc787b6" style="min-width: 30px; min-height: 30px; width: 905px; height: 454px; left: 28px; top: 205px;"><div class="sl-block-content" data-highlight-theme="monokai" style="z-index: 23; font-size: 145%;"><pre class="php"><code>
+'style.css' - Controls the setup
+              of a child theme
+
+'page.php' - Controls how single
+             pages are displayed
+
+'single.php' - Controls how single blog 
+               posts are displayed
+
+'archive.php' - Controls how archive pages 
+                are displayed
+
+'category.php' - Controls category 
+                 archive pages</code></pre></div></div></section><section data-background-color="#ff0046" data-id="f1c873fd2c3c6235ea5d1656f1559d07">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 43px; height: auto;" data-block-id="35aa16765d509161ac7abccbee85c7ba">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11; color: rgb(50, 9, 44);">
+        <h1 style="text-align:center">
+            <strong>WordPress' Fallback Architecture?</strong>
+        </h1>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" data-block-id="5a9a59e4220fc7d4c987a3ed76674591" style="min-width: 30px; min-height: 30px; width: 199px; height: 276px; left: 80px; top: 323px;">
+    <div class="sl-block-content fragment" style="z-index: 12;" data-fragment-index="0">
+        <img data-natural-width="301" data-natural-height="418" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/33b0e3185080e1130d7848e4a94cf8bc.svg">
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" data-block-id="dce63687a1f8ea0c9780292cab39a77f" style="height: auto; min-width: 30px; min-height: 30px; width: 199px; left: 80px; top: 442px;">
+    <div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(50, 9, 44);" data-fragment-index="0">
+        <p>
+            <strong>page.php</strong>
+        </p>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 199px; height: 276px; left: 381px; top: 323px;" data-block-id="da8be81230a47a534ef2d55bb5665a13">
+    <div class="sl-block-content fragment" style="z-index: 14;" data-fragment-index="1">
+        <img data-natural-width="301" data-natural-height="418" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/33b0e3185080e1130d7848e4a94cf8bc.svg">
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 199px; left: 381px; top: 442px;" data-block-id="c3eacdbb2506449068b27329ba6c7b07">
+    <div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; color: rgb(50, 9, 44);" data-fragment-index="1">
+        <p>
+            <strong>singular.php</strong>
+        </p>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 199px; height: 276px; left: 681px; top: 323px;" data-block-id="74df1eed0c6b4ffff4eea5a422c93224">
+    <div class="sl-block-content fragment" style="z-index: 16;" data-fragment-index="2">
+        <img data-natural-width="301" data-natural-height="418" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/33b0e3185080e1130d7848e4a94cf8bc.svg">
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 199px; left: 681px; top: 442px;" data-block-id="669dd87d2d3dd192fad923e41a1eaa15">
+    <div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; color: rgb(50, 9, 44);" data-fragment-index="2">
+        <p>
+            <strong>index.php</strong>
+        </p>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" data-block-id="2399b43a75fd1450995f607c613ca9fb" style="min-width: 4px; min-height: 4px; width: 37px; height: 37px; left: 302px; top: 450px;">
+    <div class="sl-block-content fragment" data-shape-type="symbol-thin-arrow-right" data-shape-fill-color="rgb(50, 9, 44)" data-shape-stretch="true" style="z-index: 18;" data-fragment-index="1">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="2 4 28 24"><g class="shape-element" fill="rgb(50, 9, 44)"><path d="M19.414 27.414l10-10c0.781-0.781 0.781-2.047 0-2.828l-10-10c-0.781-0.781-2.047-0.781-2.828 0s-0.781 2.047 0 2.828l6.586 6.586h-19.172c-1.105 0-2 0.895-2 2s0.895 2 2 2h19.172l-6.586 6.586c-0.39 0.39-0.586 0.902-0.586 1.414s0.195 1.024 0.586 1.414c0.781 0.781 2.047 0.781 2.828 0z"></path></g></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 37px; height: 37px; left: 622px; top: 450px;" data-block-id="bf8821aeb924e89e413f91c5088f5db8">
+    <div class="sl-block-content fragment" data-shape-type="symbol-thin-arrow-right" data-shape-fill-color="rgb(50, 9, 44)" data-shape-stretch="true" style="z-index: 19;" data-fragment-index="2">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="2 4 28 24"><g class="shape-element" fill="rgb(50, 9, 44)"><path d="M19.414 27.414l10-10c0.781-0.781 0.781-2.047 0-2.828l-10-10c-0.781-0.781-2.047-0.781-2.828 0s-0.781 2.047 0 2.828l6.586 6.586h-19.172c-1.105 0-2 0.895-2 2s0.895 2 2 2h19.172l-6.586 6.586c-0.39 0.39-0.586 0.902-0.586 1.414s0.195 1.024 0.586 1.414c0.781 0.781 2.047 0.781 2.828 0z"></path></g></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" data-block-id="c9480d66f410ca297ca87ea0869d6756" style="min-width: 30px; min-height: 30px; width: 2026px; height: 416px; left: -533px; top: -265px;">
+    <div class="sl-block-style" style="z-index: 10; opacity: 0.1;"><div class="sl-block-content" style="z-index: 10; border-width: 1px;" data-inline-svg="false">
+        <img data-natural-width="3584" data-natural-height="736" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/ce493e46c552a1c201b498e3856f09c3.svg">
+        
+    </div></div>
+</div></section><section data-background-color="#45103e" data-id="d92e450a583f1f9ee63569e64a8d3251">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 880px; left: 40px; top: 11px; height: auto;" data-block-id="25891b2dd293ec21cdcafc773e080261"><div class="sl-block-content fragment fade-out" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 12; color: rgb(255, 255, 255);" data-fragment-index="0">
+<h2 style="text-align: center;"><strong>Empowering you to go beyond theme builders!</strong></h2>
+</div></div>
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 880px; left: 40px; top: 56px; height: auto;" data-block-id="6730a3ceeaf7325df37b18bf27247b4c"><div class="sl-block-content fragment" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 13; color: rgb(255, 255, 255);" data-fragment-index="0">
+<h2 style="text-align:center"><strong>But how can we use this?</strong></h2>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="8e8e6f0d1a586fbf4b60483d6858947a" style="min-width: 30px; min-height: 30px; width: 859px; height: 484px; left: 51px; top: 185px;"><div class="sl-block-content fragment fade-out" style="z-index: 11; border-style: solid; border-width: 5px; border-radius: 5px; border-color: rgb(255, 0, 70);" data-fragment-index="0"><img style="" data-natural-width="371" data-natural-height="209" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/f1cec615991f3b428c81b1223a3d9dd4.gif"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="1e18cf0086ea68484a4bc657a58a8d7c" style="min-width: 30px; min-height: 30px; width: 860px; height: 484px; left: 51px; top: 185px;"><div class="sl-block-content fragment" style="z-index: 14; border-style: solid; border-width: 5px; border-radius: 5px; border-color: rgb(255, 0, 70);" data-fragment-index="0"><img style="" data-natural-width="480" data-natural-height="270" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/19abc29e2f79cc4b678941e06a5c0ab3.gif"></div></div></section><section data-background-color="#ff0046" data-id="0d580e945f684de612ef00534c4a132f">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 880px; left: 40px; top: 96px; height: auto;" data-block-id="87b4d6a9c63ce4e0e229443fb3276fd5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11; color: rgb(69, 16, 62);" dir="ui">
+<h2 style="text-align:center"><strong>Here's how can we use this!</strong></h2>
+</div></div>
+
+
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 269px; height: 374px; left: 346px; top: 233px;" data-block-id="8e214b45d1370fdf67f8b57181517502"><div class="sl-block-content fragment" style="z-index: 12;" data-fragment-index="1"><img data-natural-width="301" data-natural-height="418" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/33b0e3185080e1130d7848e4a94cf8bc.svg"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 269px; left: 346px; top: 401px;" data-block-id="988f6580ce11e54d6df338e263aa9800"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(69, 16, 62);" data-fragment-index="1">
+<p><strong>full-width.php</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 269px; height: 374px; left: 666px; top: 234px;" data-block-id="b14b310f1d33fddddc8faca377012256"><div class="sl-block-content fragment" style="z-index: 15;" data-fragment-index="2"><img data-natural-width="301" data-natural-height="418" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/33b0e3185080e1130d7848e4a94cf8bc.svg"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 269px; left: 666px; top: 402px;" data-block-id="f907b82b0f6045fdad6041342f49ffa4"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; color: rgb(50, 9, 44);" data-fragment-index="2">
+<p><strong>sidebar-custom.php</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="823fc43491b6d0ec58f4109c7d1e44e1" style="min-width: 30px; min-height: 30px; width: 976px; height: 969px; left: -663px; top: -142px;"><div class="sl-block-style" style="z-index: 10; transform: rotate(300deg); opacity: 0.3;"><div class="sl-block-content" style="z-index: 10;" data-inline-svg="false"><img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/780be31697e0f1fe5615ea70b20ebd72.svg"></div></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="02b3edd06ecf7ad0457ea4ffdea0281b" style="min-width: 30px; min-height: 30px; width: 986px; height: 979px; left: 855px; top: 420px;"><div class="sl-block-style" style="z-index: 17; transform: rotate(288deg); opacity: 0.3;"><div class="sl-block-content" style="z-index: 17;" data-inline-svg="false"><img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/780be31697e0f1fe5615ea70b20ebd72.svg"></div></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 269px; height: 374px; left: 26px; top: 233px;" data-block-id="e4329eb194a854f740ce8413ad155af3"><div class="sl-block-content fragment" style="z-index: 18;" data-fragment-index="0"><img data-natural-width="301" data-natural-height="418" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/33b0e3185080e1130d7848e4a94cf8bc.svg"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 269px; left: 26px; top: 401px;" data-block-id="2407985768439fe7b3e4a71e3d54a015"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; color: rgb(69, 16, 62);" data-fragment-index="0">
+<p><strong>style.css</strong></p>
+</div></div></section><section data-background-color="#ff0046" data-id="04675b95207d7cb7be17d0d9fcdfd820">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 879px; height: 873px; left: -662px; top: -579px;" data-block-id="b8029be3dafc72838ac739a7cbc45118">
+    <div class="sl-block-style" style="z-index: 11; opacity: 0.15;">
+        <div class="sl-block-content" style="z-index: 11;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 806px; height: 801px; left: 1023px; top: 248px;" data-block-id="8ff2206aca141976623dbf7066238ddd">
+    <div class="sl-block-style" style="z-index: 12; opacity: 0.15;">
+        <div class="sl-block-content" style="z-index: 12;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="width: 880px; left: 40px; top: 70px; height: auto;" data-block-id="98695d322ecc7aef8e675377601ab945"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 13; color: rgb(69, 16, 62);" dir="ui">
+<h1 style="text-align: center;"><strong>Let's talk child themes!</strong></h1>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="2bd45f3a246a0b818a2f8ddaa3099f72" style="min-width: 30px; min-height: 30px; width: 852px; height: 486px; left: 57px; top: 193px;"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 5px; border-color: rgb(69, 16, 62); border-radius: 5px;"><img data-natural-width="370" data-natural-height="211" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/af8724ab9bb01a3175845b8ce98eb210.gif"></div></div></section><section data-background-color="#ff0046" data-id="94b1731785ceb75c719165949d18afa6">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" style="font-size: 38px; width: 905px; height: 354px; left: 28px; top: 211px;" data-block-id="3b87929b764bd59a0d16c587c6105e23">
+    <div class="sl-block-content" data-highlight-theme="monokai" style="z-index: 11;">
+        <pre class="css"><code>/*------------------------------------------------------
+    Theme Name: Storey Child
+    Theme URI: http://www.themezilla.com
+    Author: Dustin Leer
+    Author URI: http://www.dustinleer.com
+    Description: Child theme for Dustin Leer.
+    Version: 1.1
+    License: GNU General Public License v2 or later
+    License URI: http://www.gnu.org/licenses/gpl-2.0.html
+    Text Domain: zilla
+    Domain Path: /languages/
+    Template: storey
+------------------------------------------------------*/</code></pre>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 337px; height: 39px; left: 70px; top: 233px;" data-block-id="6366c23392edc544646e2fc42ac2f560">
+    <div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 15;" data-shape-stroke-color="#ff0046" data-shape-stroke-width="4" data-fragment-index="0">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 337 39"><defs><clippath id="shape-mask-20-1509037953261"><rect width="337" height="39"></rect></clippath></defs><rect width="337" height="39" clip-path="url(#shape-mask-20-1509037953261)" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#ff0046" stroke-width="8"></rect></svg>
+    </div>
+</div>
+
+<div class="sl-block" data-block-type="shape" style="width: 905px; height: 26px; left: 28px; top: 135px;" data-block-id="9c27a8d2d1a65e18fb43de42c380b0f1">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(204, 204, 204)" data-shape-stretch="true" style="z-index: 13;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 905 26"><rect width="905" height="26" class="shape-element" fill="rgb(204, 204, 204)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 13px; height: 13px; left: 50px; top: 142px;" data-block-id="f8a5d0ec3c3520f1200c820856ea60d6">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(204, 0, 0)" data-shape-stretch="true" style="z-index: 14;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(204, 0, 0)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 13px; height: 13px; left: 78px; top: 142px;" data-block-id="8971a870772367e8616f7fc4d2076ab2">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(230, 145, 56)" data-shape-stretch="true" style="z-index: 16;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(230, 145, 56)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 13px; height: 13px; left: 106px; top: 142px;" data-block-id="7aa8064f59021b518d94319bfa9577a5">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(106, 168, 79)" data-shape-stretch="true" style="z-index: 17;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(106, 168, 79)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 279px; height: 50px; left: 28px; top: 161px;" data-block-id="510c99d2692a2df2f0f4d99d994627fd">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(27, 28, 25)" data-shape-stretch="true" style="z-index: 18;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 279 50"><rect width="279" height="50" class="shape-element" fill="rgb(27, 28, 25)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 905px; height: 56px; left: 28px; top: 155px;" data-block-id="6041581c09e79124f13baec6c3f7f828">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(39, 40, 35)" data-shape-stretch="true" style="z-index: 12;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 905 56"><rect width="905" height="56" class="shape-element" fill="rgb(39, 40, 35)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="width: 279px; left: 28px; top: 163px; height: auto;" data-block-id="b561abc8c36f4e3697f45b0affa261ac">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 19; color: rgb(255, 255, 255);">
+<p style="text-align:center"><strong><span style="font-size:0.7em">style.css</span></strong></p>
+</div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 279px; height: 4px; left: 28px; top: 207px;" data-block-id="6d3355783a79ddce97de01bd211d84de">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(24, 137, 238)" data-shape-stretch="true" style="z-index: 20;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 279 4"><rect width="279" height="4" class="shape-element" fill="rgb(24, 137, 238)"></rect></svg>
+    </div>
+</div>
+
+<div class="sl-block" data-block-type="shape" style="width: 337px; height: 39px; left: 70px; top: 484px;" data-block-id="ff67fbdccdcae4170c3a8a0da168214d">
+    <div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 21;" data-shape-stroke-color="#ff0046" data-shape-stroke-width="4" data-fragment-index="0">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 337 39"><defs><clippath id="shape-mask-21-1509037953282"><rect width="337" height="39"></rect></clippath></defs><rect width="337" height="39" clip-path="url(#shape-mask-21-1509037953282)" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#ff0046" stroke-width="8"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 879px; height: 873px; left: -662px; top: -579px;" data-block-id="f32f4d8b505fb7dcbb996e2fd581ec5a">
+    <div class="sl-block-style" style="z-index: 10; opacity: 0.15;">
+        <div class="sl-block-content" style="z-index: 10;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 806px; height: 801px; left: 1023px; top: 248px;" data-block-id="3ffc71a0a54e5289d08898c87de070f1">
+    <div class="sl-block-style" style="z-index: 10; opacity: 0.15;">
+        <div class="sl-block-content" style="z-index: 10;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div></section><section data-background-color="#ff0046" data-id="8988e953f44d7dbdf5417bb4d0371381">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 879px; height: 873px; left: -662px; top: -579px;" data-block-id="dd279773c41f2a5d1731791512200d7b">
+    <div class="sl-block-style" style="z-index: 11; opacity: 0.15;">
+        <div class="sl-block-content" style="z-index: 11;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="width: 806px; height: 801px; left: 1023px; top: 248px;" data-block-id="07f75cdbf9b2a29fab50327e5bbeb70d">
+    <div class="sl-block-style" style="z-index: 12; opacity: 0.15;">
+        <div class="sl-block-content" style="z-index: 12;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 70px; height: auto;" data-block-id="31cb913b7d73088ca6deef77d8f8e8e8"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 13; color: rgb(69, 16, 62);" dir="ui">
+<h1 style="text-align:center"><strong>Now let's talk templates!</strong></h1>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="fa87ff27aab3467f4faff21a35283073" style="min-width: 30px; min-height: 30px; width: 869px; height: 489px; left: 46px; top: 182px;"><div class="sl-block-content" style="z-index: 14; border-style: solid; border-width: 5px; border-color: rgb(69, 16, 62); border-radius: 5px;"><img data-natural-width="480" data-natural-height="270" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/97b629c05e6fee0160508b6dab6d114b.gif"></div></div></section><section data-background-color="#45103e" data-id="949f85f3498be3868769958bdc8a0f61">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" style="font-size: 38px; width: 905px; height: 614px; left: 28px; top: 81px;" data-block-id="6d4e44b04e7d2b1b9ad4ebba7d36b066">
+    <div class="sl-block-content" data-highlight-theme="monokai" style="z-index: 12; font-size: 99%;">
+        <pre class="none"><code> &lt;?php /* Template Name: Full Width (No Sidebar) */ ?&gt;
+
+ &lt;?php get_header(); ?&gt;
+
+   &lt;div id="content"&gt;
+
+     &lt;div id="inner-content" class="row"&gt;
+
+       &lt;main id="main" class="large-12 medium-12 columns" role="main"&gt;
+
+         &lt;?php if (have_posts()) : while (have_posts()) : the_post(); ?&gt;
+
+           &lt;!-- Here is our loop --&gt;
+           &lt;?php get_template_part( 'parts/loop', 'page' ); ?&gt;
+
+         &lt;?php endwhile; endif; ?&gt;
+
+       &lt;/main&gt; &lt;!-- end #main --&gt;
+
+     &lt;/div&gt; &lt;!-- end #inner-content --&gt;
+
+   &lt;/div&gt; &lt;!-- end #content --&gt;
+
+ &lt;?php get_footer(); ?&gt;</code></pre>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 715px; height: 39px; left: 28px; top: 81px;" data-block-id="cb9a3fe4f4f2331865cc306b2b4d8442">
+    <div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 16;" data-shape-stroke-color="#ff0046" data-shape-stroke-width="4" data-fragment-index="0">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 715 39"><defs><clippath id="shape-mask-18-1509037952782"><rect width="715" height="39"></rect></clippath></defs><rect width="715" height="39" clip-path="url(#shape-mask-18-1509037952782)" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#ff0046" stroke-width="8"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 666px; height: 70px; left: 158px; top: 364px;" data-block-id="f1a5996845390c696e3b18d6f2413453">
+    <div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 23;" data-shape-stroke-color="#ff0046" data-shape-stroke-width="4" data-fragment-index="2">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 666 70"><defs><clippath id="shape-mask-19-1509037952784"><rect width="666" height="70"></rect></clippath></defs><rect width="666" height="70" clip-path="url(#shape-mask-19-1509037952784)" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#ff0046" stroke-width="8"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 905px; height: 26px; left: 28px; top: 5px;" data-block-id="09e9b3876a4796a735f564f41a2355bf">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(204, 204, 204)" data-shape-stretch="true" style="z-index: 14;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 905 26"><rect width="905" height="26" class="shape-element" fill="rgb(204, 204, 204)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 13px; height: 13px; left: 50px; top: 12px;" data-block-id="c9d5cdb83c8ebe936823a64f996c9356">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(204, 0, 0)" data-shape-stretch="true" style="z-index: 15;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(204, 0, 0)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 13px; height: 13px; left: 78px; top: 12px;" data-block-id="92be84047f1e370a38b85f0dd5fc114c">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(230, 145, 56)" data-shape-stretch="true" style="z-index: 17;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(230, 145, 56)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 13px; height: 13px; left: 106px; top: 12px;" data-block-id="4566fa98ed0bfe72e5395ec46b1a3de2">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(106, 168, 79)" data-shape-stretch="true" style="z-index: 18;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(106, 168, 79)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 279px; height: 50px; left: 28px; top: 31px;" data-block-id="04c348dd39d04287db05db08f8f71c5e">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(27, 28, 25)" data-shape-stretch="true" style="z-index: 19;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 279 50"><rect width="279" height="50" class="shape-element" fill="rgb(27, 28, 25)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 905px; height: 56px; left: 28px; top: 25px;" data-block-id="b4230eb2da9758b01ed32cff8236dc3a">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(39, 40, 35)" data-shape-stretch="true" style="z-index: 13;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 905 56"><rect width="905" height="56" class="shape-element" fill="rgb(39, 40, 35)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="width: 279px; left: 28px; top: 33px; height: auto;" data-block-id="b906c6f5d09cb25bb19c86aa850abe40">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 20; color: rgb(255, 255, 255);">
+<p style="text-align:center"><strong><span style="font-size:0.7em">full-width.php</span> </strong></p>
+</div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 279px; height: 4px; left: 28px; top: 77px;" data-block-id="fe8dd1f7fdee4a0ec4a5fd995c45ee79">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(24, 137, 238)" data-shape-stretch="true" style="z-index: 21;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 279 4"><rect width="279" height="4" class="shape-element" fill="rgb(24, 137, 238)"></rect></svg>
+    </div>
+</div>
+
+<div class="sl-block" data-block-type="shape" data-block-id="4995892550fdbae5ca056e0f381a37f8" style="min-width: 4px; min-height: 4px; width: 905px; height: 370px; left: 28px; top: 330px;"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="rgb(39, 40, 35)" data-shape-stretch="true" style="z-index: 22;" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 905 370"><rect width="905" height="370" class="shape-element" fill="rgb(39, 40, 35)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 879px; height: 873px; left: -662px; top: -579px;" data-block-id="0485a2d4152018c5b215ea3fc357a843">
+    <div class="sl-block-style" style="z-index: 10; opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 10;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 1141px; height: 1133px; left: 592px; top: -57px;" data-block-id="ec8076c0875a913347697c71e4bad0bb">
+    <div class="sl-block-style" style="z-index: 11; opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 11;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div></section><section data-background-color="#ff0046" data-id="089b4c0cb7a85adc27d6b9b63646f63d">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 880px; left: 40px; top: 13px; height: auto;" data-block-id="67492d229009428831944d609b631c2f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 12; color: rgb(69, 16, 62);">
+<h2 style="text-align:center">
+<strong>Oh right we had a sidebar template didn't we? </strong><span style="text-align:center">🤣 🤣 🤣</span>
+</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 976px; height: 969px; left: -729px; top: -646px;" data-block-id="791ac278ff1151cecb059fac9185ce13"><div class="sl-block-style" style="z-index: 10; transform: rotate(300deg); opacity: 0.5;"><div class="sl-block-content" style="z-index: 10;" data-inline-svg="false"><img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/780be31697e0f1fe5615ea70b20ebd72.svg"></div></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 1021px; height: 1014px; left: 580px; top: 112px;" data-block-id="59afe1438127a4a614020471c9847167"><div class="sl-block-style" style="z-index: 11; opacity: 0.5;"><div class="sl-block-content" style="z-index: 11;" data-inline-svg="false"><img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/780be31697e0f1fe5615ea70b20ebd72.svg"></div></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 640px; height: 497px; left: 160px; top: 187px;" data-block-id="db7a7f83ae9b0ead5c65d3ffb29a148c"><div class="sl-block-content" style="z-index: 14; border-style: solid; border-width: 5px; border-color: rgb(69, 16, 62); border-radius: 5px;"><img data-natural-width="500" data-natural-height="388" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/82aa7c0198c47683ffa27e6cbdf71b37.gif"></div></div></section><section data-background-color="#45103e" data-id="5338c937cd9e80929a915fa0b003434f">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" style="font-size: 38px; min-width: 30px; min-height: 30px; width: 905px; height: 694px; left: 28px; top: 41px;" data-block-id="cb345f3e164a5f0a86a39c9e0dff5cb8">
+    <div class="sl-block-content" data-highlight-theme="monokai" style="z-index: 12; font-size: 97%;">
+        <pre class="none"><code>  &lt;?php /* Template Name: Sidebar Custom */ ?&gt;
+
+  &lt;?php get_header(); ?&gt;
+
+    &lt;div id="content"&gt;
+
+      &lt;div id="inner-content" class="row"&gt;
+
+          &lt;main id="main" class="large-8 medium-8 columns" role="main"&gt;
+
+          &lt;?php if (have_posts()) : while (have_posts()) : the_post(); ?&gt;
+
+              &lt;!-- Here is our loop --&gt;
+              &lt;?php get_template_part( 'parts/loop', 'page' ); ?&gt;
+
+            &lt;?php endwhile; endif; ?&gt;
+
+        &lt;/main&gt; &lt;!-- end #main --&gt;
+
+        &lt;!-- This is our sidebar, but where's the html??? --&gt;
+        &lt;?php get_template_part( 'parts/sidebar.php' ); ?&gt;
+
+      &lt;/div&gt; &lt;!-- end #inner-content --&gt;
+
+    &lt;/div&gt; &lt;!-- end #content --&gt;
+
+  &lt;?php get_footer(); ?&gt;</code></pre>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 715px; height: 39px; left: 28px; top: 41px;" data-block-id="3268a0238570a612451b59451935dffe">
+    <div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 16;" data-shape-stroke-color="#ff0046" data-shape-stroke-width="4" data-fragment-index="0">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 715 39"><defs><clippath id="shape-mask-15-1509037952549"><rect width="715" height="39"></rect></clippath></defs><rect width="715" height="39" clip-path="url(#shape-mask-15-1509037952549)" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#ff0046" stroke-width="8"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 666px; height: 70px; left: 194px; top: 327px;" data-block-id="853ee741de0e5b467f0d5729a91b0ad6">
+    <div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 25;" data-shape-stroke-color="#ff0046" data-shape-stroke-width="4" data-fragment-index="2">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 666 70"><defs><clippath id="shape-mask-16-1509037952552"><rect width="666" height="70"></rect></clippath></defs><rect width="666" height="70" clip-path="url(#shape-mask-16-1509037952552)" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#ff0046" stroke-width="8"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 905px; height: 26px; left: 28px; top: -35px;" data-block-id="c9d07142be31ebe7f481ca038a8663ad">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(204, 204, 204)" data-shape-stretch="true" style="z-index: 14;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 905 26"><rect width="905" height="26" class="shape-element" fill="rgb(204, 204, 204)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 13px; height: 13px; left: 50px; top: -28px;" data-block-id="c59824f63010a653ca04c2437627e13f">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(204, 0, 0)" data-shape-stretch="true" style="z-index: 15;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(204, 0, 0)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 13px; height: 13px; left: 78px; top: -28px;" data-block-id="a8093985fae709c893c947aa00d3a984">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(230, 145, 56)" data-shape-stretch="true" style="z-index: 17;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(230, 145, 56)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 13px; height: 13px; left: 106px; top: -28px;" data-block-id="e8f0bcaded95cb02e2f75380ccefe29b">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(106, 168, 79)" data-shape-stretch="true" style="z-index: 18;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(106, 168, 79)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 279px; height: 50px; left: 28px; top: -9px;" data-block-id="bfd064eacf3ccd8841bfd898216e0d5c">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(27, 28, 25)" data-shape-stretch="true" style="z-index: 19;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 279 50"><rect width="279" height="50" class="shape-element" fill="rgb(27, 28, 25)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 905px; height: 56px; left: 28px; top: -15px;" data-block-id="067ff4d4153ddd6d6d0d0e0bc8455aea">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(39, 40, 35)" data-shape-stretch="true" style="z-index: 13;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 905 56"><rect width="905" height="56" class="shape-element" fill="rgb(39, 40, 35)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="width: 279px; left: 28px; top: -7px; height: auto;" data-block-id="06464cf234edffcd8baa458067af45e7">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 20; color: rgb(255, 255, 255);">
+<p style="text-align:center"><strong><span style="font-size:0.7em">sidebar-custom.php</span> </strong></p>
+</div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 279px; height: 4px; left: 28px; top: 37px;" data-block-id="13e426d4919233b8d053bc38a6a5e340">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(24, 137, 238)" data-shape-stretch="true" style="z-index: 21;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 279 4"><rect width="279" height="4" class="shape-element" fill="rgb(24, 137, 238)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 879px; height: 873px; left: -662px; top: -579px;" data-block-id="30976114300a83a8d6c5e3a0d0b514f6">
+    <div class="sl-block-style" style="z-index: 11; opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 11;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 684px; height: 70px; left: 120px; top: 493px;" data-block-id="a4e421e42a49310ffe19494466d303b7">
+    <div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 25;" data-shape-stroke-color="#ff0046" data-shape-stroke-width="4" data-fragment-index="3">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 684 70"><defs><clippath id="shape-mask-17-1509037952570"><rect width="684" height="70"></rect></clippath></defs><rect width="684" height="70" clip-path="url(#shape-mask-17-1509037952570)" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#ff0046" stroke-width="8"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 1141px; height: 1133px; left: 592px; top: -57px;" data-block-id="cc95685b01431f2a05532b1051e521ab">
+    <div class="sl-block-style" style="z-index: 10; opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 10;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 905px; height: 445px; left: 28px; top: 290px;" data-block-id="be014060f7f11241ab2763c9c4ee649f"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="rgb(39, 40, 35)" data-shape-stretch="true" style="z-index: 24;" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 905 445"><rect width="905" height="445" class="shape-element" fill="rgb(39, 40, 35)"></rect></svg></div></div></section><section data-background-color="#ff0046" data-id="362df0d50c4aa2f1b22e2a336ee72e83">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" style="font-size: 35px; width: 905px; height: 96px; left: 28px; top: 322px;" data-block-id="928d6ef448c598374fac12f5430b4015">
+    <div class="sl-block-content" data-highlight-theme="monokai" style="z-index: 11;">
+        <pre class="none"><code> 
+  &lt;!-- This is our sidebar, but where's the html??? --&gt;
+  &lt;?php get_template_part( 'parts/sidebar.php' ); ?&gt;</code></pre>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="width: 880px; left: 41px; top: 173px; height: auto;" data-block-id="3f738d2a4c2589e586d5d2f1a55eff19">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 12; color: rgb(255, 255, 255);">
+<h2 style="text-align:center"><strong>This is our sidebar call?!?!</strong></h2>
+</div>
+</div>
+
+<div class="sl-block" data-block-type="shape" style="width: 905px; height: 40px; left: 28px; top: 282px;" data-block-id="3aa4e7b499ce8c6bcb904f1efdfb69ac">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(204, 204, 204)" data-shape-stretch="true" style="z-index: 13;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 905 40"><rect width="905" height="40" class="shape-element" fill="rgb(204, 204, 204)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 13px; height: 13px; left: 50px; top: 296px;" data-block-id="a6b2686c3438fd7670b9eef374aa331a">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(204, 0, 0)" data-shape-stretch="true" style="z-index: 14;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(204, 0, 0)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 13px; height: 13px; left: 78px; top: 296px;" data-block-id="f77249460e16daecd70a91260ea2317d">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(230, 145, 56)" data-shape-stretch="true" style="z-index: 15;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(230, 145, 56)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 13px; height: 13px; left: 106px; top: 296px;" data-block-id="1f7e450db41e6131b2d01765286910a4">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(106, 168, 79)" data-shape-stretch="true" style="z-index: 16;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(106, 168, 79)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="width: 976px; height: 969px; left: -736px; top: -615px;" data-block-id="48acd03542566ba1aa9f601654f871bf"><div class="sl-block-style" style="z-index: 10; transform: rotate(37deg); opacity: 0.5;"><div class="sl-block-content" style="z-index: 10;" data-inline-svg="false"><img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/780be31697e0f1fe5615ea70b20ebd72.svg"></div></div></div>
+<div class="sl-block" data-block-type="image" style="width: 1021px; height: 1014px; left: 885px; top: 308px;" data-block-id="80b0f79027b5d26168607911dbdccf2a"><div class="sl-block-style" style="z-index: 17; opacity: 0.5; transform: rotate(252deg);"><div class="sl-block-content" style="z-index: 17;" data-inline-svg="false"><img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/780be31697e0f1fe5615ea70b20ebd72.svg"></div></div></div>
+</section><section data-background-color="#ff0046" data-id="e889a3cdf4a2dcd457bc91a291d50474">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 446px; left: 257px; top: 183px; height: auto;" data-block-id="03b98b6125889480b2c20088b8725911">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11; color: rgb(255, 255, 255);">
+<h1 style="text-align:center"><span style="font-size:2.0em"><strong>WAT?</strong></span></h1>
+</div>
+</div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 2560px; height: 1920px; left: -800px; top: -400px;" data-block-id="917bf9f7d5c13e09dec08fc13098c759"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="640" data-natural-height="480" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/f8118537b74048874dc1e8cb2dce97f4.gif"></div></div></section><section data-background-color="#ff0046" data-id="ec209ced31ee8170fe69c2e6ecb78953">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="code" style="font-size: 35px; width: 905px; height: 96px; left: 28px; top: 322px;" data-block-id="c1d45f916f38627582b94bfec27d53ff">
+    <div class="sl-block-content" data-highlight-theme="monokai" style="z-index: 11;">
+        <pre class="none"><code> 
+  &lt;!-- This is our sidebar, but where's the html??? --&gt;
+  &lt;?php get_template_part( 'parts/sidebar.php' ); ?&gt;</code></pre>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="width: 880px; left: 41px; top: 173px; height: auto;" data-block-id="5c37aa089ec03b8585ede16955978288">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 12; color: rgb(255, 255, 255);">
+<h2 style="text-align:center"><strong>Let's talk about this more.</strong></h2>
+</div>
+</div>
+
+<div class="sl-block" data-block-type="shape" style="width: 905px; height: 40px; left: 28px; top: 282px;" data-block-id="23c1d54b5e476f98d17eb40693997ebd">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(204, 204, 204)" data-shape-stretch="true" style="z-index: 14;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 905 40"><rect width="905" height="40" class="shape-element" fill="rgb(204, 204, 204)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 13px; height: 13px; left: 50px; top: 296px;" data-block-id="a84da166faaa4e8f96e8f120d103e515">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(204, 0, 0)" data-shape-stretch="true" style="z-index: 15;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(204, 0, 0)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 13px; height: 13px; left: 78px; top: 296px;" data-block-id="71de4ac72c09d329d28c89051c9681a5">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(230, 145, 56)" data-shape-stretch="true" style="z-index: 16;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(230, 145, 56)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 13px; height: 13px; left: 106px; top: 296px;" data-block-id="77e09ecb1391e168e28221ed7e5724ef">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(106, 168, 79)" data-shape-stretch="true" style="z-index: 17;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(106, 168, 79)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="width: 976px; height: 969px; left: -736px; top: -615px;" data-block-id="fdb7a09ac2aa7ecc5071d0431f6af6ca"><div class="sl-block-style" style="z-index: 10; transform: rotate(37deg); opacity: 0.5;"><div class="sl-block-content" style="z-index: 10;" data-inline-svg="false"><img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/780be31697e0f1fe5615ea70b20ebd72.svg"></div></div></div>
+<div class="sl-block" data-block-type="image" style="width: 1021px; height: 1014px; left: 885px; top: 308px;" data-block-id="7e6b7a68185336e0c2111be6f43e1a29"><div class="sl-block-style" style="z-index: 18; opacity: 0.5; transform: rotate(252deg);"><div class="sl-block-content" style="z-index: 18;" data-inline-svg="false"><img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/780be31697e0f1fe5615ea70b20ebd72.svg"></div></div></div>
+<div class="sl-block" data-block-type="text" style="width: 880px; left: 40px; top: 459px; height: auto;" data-block-id="8b22d8cd8b0b0b12a7608e1db57468f6">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 19; color: rgb(255, 255, 255);">
+<h2 style="text-align:center"><strong>With a real life example.</strong></h2>
+</div>
+</div></section><section data-background-color="#ff0046" data-id="4cf6ee4ac4e35ac4c2efbda5c92da078">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 879px; height: 873px; left: -662px; top: -579px;" data-block-id="005b7860f7f2d08bf3bd0f6cc12812e5">
+    <div class="sl-block-style" style="z-index: 11; opacity: 0.15;">
+        <div class="sl-block-content" style="z-index: 11;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="width: 1141px; height: 1133px; left: 592px; top: -57px;" data-block-id="469c1353689f74e94c759d0d77acedab">
+    <div class="sl-block-style" style="z-index: 10; opacity: 0.15;">
+        <div class="sl-block-content" style="z-index: 10;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 905px; height: 26px; left: 29px; top: 27px;" data-block-id="799a3891b1cd46e03f7de97a23178293">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(204, 204, 204)" data-shape-stretch="true" style="z-index: 14;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 905 26"><rect width="905" height="26" class="shape-element" fill="rgb(204, 204, 204)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 13px; height: 13px; left: 51px; top: 34px;" data-block-id="e474ad4807169f9c57bae80538c64bf5">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(204, 0, 0)" data-shape-stretch="true" style="z-index: 15;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(204, 0, 0)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 13px; height: 13px; left: 79px; top: 34px;" data-block-id="92a5a5e08d65d70fff5bcd57a88e65c9">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(230, 145, 56)" data-shape-stretch="true" style="z-index: 16;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(230, 145, 56)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 13px; height: 13px; left: 107px; top: 34px;" data-block-id="33257a72e8218e7e8211f67728278c96">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(106, 168, 79)" data-shape-stretch="true" style="z-index: 17;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(106, 168, 79)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="width: 905px; height: 422px; left: 29px; top: 47px;" data-block-id="17b8957f98989470d5e1d33c56abfe3e">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(39, 40, 35)" data-shape-stretch="true" style="z-index: 13;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 905 422"><rect width="905" height="422" class="shape-element" fill="rgb(39, 40, 35)"></rect></svg>
+    </div>
+</div>
+
+
+<div class="sl-block" data-block-type="code" style="font-size: 32px; width: 896px; height: 349px; left: 38px; top: 109px;" data-block-id="dc668fc75063a0939217f7933b2c1b79">
+    <div class="sl-block-content" data-highlight-theme="monokai" style="z-index: 18;">
+        <pre class="none"><code>&lt;?php /* The template for displaying all single posts. */
+
+get_header(); ?&gt;
+
+&lt;?php if( get_template_part('parts/hero_single') ): ?&gt;
+  &lt;?php get_template_part( 'parts/hero_single' ); ?&gt;
+&lt;?php endif; ?&gt;
+
+  &lt;section class="page_content"&gt; ...
+  &lt;/section&gt;
+
+&lt;?php if( get_template_part('parts/recent-posts-extended') ): ?&gt;
+  &lt;?php get_template_part( 'parts/recent-posts-extended' ); ?&gt;
+&lt;?php endif; ?&gt;
+
+&lt;?php get_footer(); ?&gt;</code></pre>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 279px; height: 50px; left: 29px; top: 53px;" data-block-id="eb891d33e1b0762f562e5e8377f29609">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(27, 28, 25)" data-shape-stretch="true" style="z-index: 19;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 279 50"><rect width="279" height="50" class="shape-element" fill="rgb(27, 28, 25)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="width: 189px; left: 74px; top: 53px; height: auto;" data-block-id="58ab65297cd44e13061471faefe57b69">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 20; color: rgb(255, 255, 255);">
+<p style="text-align:center"><strong><span style="font-size:0.7em">single.php</span></strong></p>
+</div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 279px; height: 4px; left: 29px; top: 99px;" data-block-id="a795eb23446e521488208ae4b9cdbf84">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(24, 137, 238)" data-shape-stretch="true" style="z-index: 21;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 279 4"><rect width="279" height="4" class="shape-element" fill="rgb(24, 137, 238)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 506px;" data-block-id="4a55ed60f9c53628ec6c9a882a7ba74c"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 22; color: rgb(255, 255, 255); text-align: center;" data-has-custom-html="" data-fragment-index="0">
+<p><span style="font-size:1.4em;">I'm calling several pieces located in a folder/directory called <strong>parts</strong>.</span></p>
+</div></div></section><section data-background-color="#45103e" data-id="6a1b6bf8ed0401b832d1d0848915e54f">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 879px; height: 873px; left: -662px; top: -579px;" data-block-id="809ed2213de0786dc7656f2f395bff58">
+    <div class="sl-block-style" style="z-index: 12; opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 12;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 1141px; height: 1133px; left: 592px; top: -57px;" data-block-id="519e953a4ec3c0845970fbda48672039">
+    <div class="sl-block-style" style="z-index: 11; opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 11;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 382px; height: 26px; left: 28px; top: 16px;" data-block-id="ee4b30cba6be5d56ed66cbe2f1b3a67b">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(204, 204, 204)" data-shape-stretch="true" style="z-index: 13;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 382 26"><rect width="382" height="26" class="shape-element" fill="rgb(204, 204, 204)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 13px; height: 13px; left: 50px; top: 23px;" data-block-id="d2c29dcfba2a274b550ca1b1e0782644">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(204, 0, 0)" data-shape-stretch="true" style="z-index: 14;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(204, 0, 0)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 13px; height: 13px; left: 78px; top: 23px;" data-block-id="41ec6d75eb9b8954166cb2a2fa4cdc40">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(230, 145, 56)" data-shape-stretch="true" style="z-index: 15;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(230, 145, 56)"></ellipse></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 13px; height: 13px; left: 106px; top: 23px;" data-block-id="03a8840204e5e7bd60769dd3c6cc68d3">
+    <div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgb(106, 168, 79)" data-shape-stretch="true" style="z-index: 16;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 13 13"><ellipse rx="6.5" ry="6.5" cx="6.5" cy="6.5" class="shape-element" fill="rgb(106, 168, 79)"></ellipse></svg>
+    </div>
+</div>
+
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 382px; height: 643px; left: 28px; top: 42px;" data-block-id="8fb6facb6a45f89ee616e09978cb565c">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(27, 28, 25)" data-shape-stretch="true" style="z-index: 17;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 382 643"><rect width="382" height="643" class="shape-element" fill="rgb(27, 28, 25)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" data-block-id="2621a21fb4702c2e91a0f864fff53041" style="height: auto; min-width: 30px; min-height: 30px; width: 354px; left: 40px; top: 51px;">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; color: rgb(170, 170, 170);">
+<p style="text-align:left"><strong>FOLDERS</strong></p>
+
+<p style="text-align:left"><strong>     our-theme</strong></p>
+
+<p style="text-align:left"><strong>        img</strong></p>
+
+<p style="text-align:left"><strong>        inc</strong></p>
+
+<p style="text-align:left"><strong>        js</strong></p>
+
+<p style="text-align:left"><strong>        languages</strong></p>
+
+<p style="text-align:left"><strong>        layouts</strong></p>
+
+<p style="text-align:left"><strong>        scss</strong></p>
+
+<p style="text-align:left"><strong>        parts</strong></p>
+
+<p style="text-align:left"><strong>        templates</strong></p>
+
+<p style="text-align:left"><strong>        </strong>404.php</p>
+
+<p style="text-align:left">        archive.php</p>
+
+<p style="text-align:left">        comments.php</p>
+</div>
+</div>
+<div class="sl-block" data-block-type="shape" data-block-id="40309153387d02bf149c5339cd25fc60" style="min-width: 4px; min-height: 4px; width: 382px; height: 49px; left: 28px; top: 418px;"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(34, 34, 34)" data-shape-stretch="true" style="z-index: 18;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 382 49"><rect width="382" height="49" class="shape-element" fill="rgb(34, 34, 34)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 4px; height: 49px; left: 28px; top: 418px;" data-block-id="3a86b9f672bac1c3f5dd5e1fa912061e">
+    <div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(24, 137, 238)" data-shape-stretch="true" style="z-index: 20;">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 4 49"><rect width="4" height="49" class="shape-element" fill="rgb(24, 137, 238)"></rect></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" data-block-id="5c677e1d03749ad1344c8c5ea42ba251" style="min-width: 30px; min-height: 30px; width: 30px; height: 26px; left: 40px; top: 104px;"><div class="sl-block-content" style="z-index: 21;" data-inline-svg="false"><img data-natural-width="16" data-natural-height="14" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/b42d9f3bb357ede48f48bae22c266fde.svg"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="f147a87d8a77561b66987785c7d2dc8a" style="min-width: 30px; min-height: 30px; width: 30px; height: 26px; left: 63px; top: 147px;"><div class="sl-block-content" style="z-index: 22;" data-inline-svg="false"><img data-natural-width="16" data-natural-height="14" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/8c90210ccdfd6fdce99c0c47eccf6bba.svg"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 30px; height: 26px; left: 63px; top: 193px;" data-block-id="5b227611be4c2c8d7e864419667fdcea"><div class="sl-block-content" style="z-index: 23;" data-inline-svg="false"><img data-natural-width="16" data-natural-height="14" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/8c90210ccdfd6fdce99c0c47eccf6bba.svg"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 30px; height: 26px; left: 63px; top: 243px;" data-block-id="e241e0f0452585cc2c16d8f57a7deaed"><div class="sl-block-content" style="z-index: 24;" data-inline-svg="false"><img data-natural-width="16" data-natural-height="14" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/8c90210ccdfd6fdce99c0c47eccf6bba.svg"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 30px; height: 26px; left: 63px; top: 287px;" data-block-id="644510550ae7923ae66fb568df540811"><div class="sl-block-content" style="z-index: 25;" data-inline-svg="false"><img data-natural-width="16" data-natural-height="14" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/8c90210ccdfd6fdce99c0c47eccf6bba.svg"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 30px; height: 26px; left: 63px; top: 333px;" data-block-id="e7d8c4ebea185ae33b03b6756b632045"><div class="sl-block-content" style="z-index: 26;" data-inline-svg="false"><img data-natural-width="16" data-natural-height="14" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/8c90210ccdfd6fdce99c0c47eccf6bba.svg"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 30px; height: 26px; left: 63px; top: 383px;" data-block-id="41948cec1f30bfd0c971865e5f23a1e2"><div class="sl-block-content" style="z-index: 27;" data-inline-svg="false"><img data-natural-width="16" data-natural-height="14" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/8c90210ccdfd6fdce99c0c47eccf6bba.svg"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 30px; height: 26px; left: 63px; top: 428px;" data-block-id="c42d8206dfca9a9edbf3766e60dd61c3"><div class="sl-block-content" style="z-index: 28;" data-inline-svg="false"><img data-natural-width="16" data-natural-height="14" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/8c90210ccdfd6fdce99c0c47eccf6bba.svg"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 30px; height: 26px; left: 63px; top: 475px;" data-block-id="db569a1749261983f3c86e3632702c18"><div class="sl-block-content" style="z-index: 29;" data-inline-svg="false"><img data-natural-width="16" data-natural-height="14" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/8c90210ccdfd6fdce99c0c47eccf6bba.svg"></div></div>
+<div class="sl-block" data-block-type="text" style="width: 503px; left: 442px; top: 77px; height: auto;" data-block-id="1559e2a80e2ef5c5ab5ff9cecef9b0c9">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 30; color: rgb(255, 255, 255);">
+<h2><strong>Ok...</strong></h2>
+
+<h2><strong>Template parts?</strong></h2>
+</div>
+</div>
+<div class="sl-block" data-block-type="text" style="width: 503px; left: 442px; top: 280px; height: auto;" data-block-id="60c52fe82f9946677d2752e188afa190">
+    <div class="sl-block-content fragment" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 31; color: rgb(255, 255, 255);" data-fragment-index="0">
+<p>Ok, so we've come across this more than once now.</p>
+</div>
+</div>
+<div class="sl-block" data-block-type="text" style="width: 503px; left: 442px; top: 387px; height: auto;" data-block-id="014eb99e1f6590d75d07fcddfbd42e63">
+    <div class="sl-block-content fragment" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 32; color: rgb(255, 255, 255);" data-fragment-index="1">
+<p>What are template parts?</p>
+</div>
+</div>
+<div class="sl-block" data-block-type="text" data-block-id="89353dc6eab02cc8dd3337d25e765f02" style="height: auto; min-width: 30px; min-height: 30px; width: 439px; left: 442px; top: 474px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 33;" data-fragment-index="2">
+<p style="color:rgb(255, 255, 255); text-align:left">Why should you use them?</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="0eb22ba6d6e3049916ee9c2ca4fd2318" style="height: auto; min-width: 30px; min-height: 30px; width: 439px; left: 442px; top: 560px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 34;" data-fragment-index="3">
+<p style="text-align: left;"><span style="color:rgb(255, 255, 255); text-align:left">Are they really needed?</span></p>
+</div></div></section><section data-background-color="#45103e" data-id="e00435b3aea90eec87eb83cd82b07ca9">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 879px; height: 873px; left: -662px; top: -579px;" data-block-id="5e32dcc042c666ec7077c06fdedcd4d6">
+    <div class="sl-block-style" style="z-index: 11; opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 11;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="width: 1141px; height: 1133px; left: 592px; top: -57px;" data-block-id="81f173d016ac717f948bdd51bdb57660">
+    <div class="sl-block-style" style="z-index: 10; opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 10;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 801px; left: 80px; top: 39px; height: auto;" data-block-id="ae188b5f1c0af0da402db3fbfb06c358">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 12; color: rgb(255, 255, 255);">
+<h2><strong>Styles, templates, and template partials, OH MY!</strong></h2>
+</div>
+</div>
+
+
+
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 269px; height: 374px; left: 26px; top: 229px;" data-block-id="acd538294bef1233f8ee9cad066fc6f4"><div class="sl-block-content fragment" style="z-index: 13;" data-fragment-index="0"><img data-natural-width="301" data-natural-height="418" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/33b0e3185080e1130d7848e4a94cf8bc.svg"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 269px; left: 26px; top: 397px;" data-block-id="567ae55faf1f77b19b834b628e9dbdf1"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(69, 16, 62);" data-fragment-index="0">
+<p><strong>header.php</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 269px; height: 374px; left: 346px; top: 229px;" data-block-id="8afca5199b3d8eff7dfcf73fa48cb2c1"><div class="sl-block-content fragment" style="z-index: 15;" data-fragment-index="0"><img data-natural-width="301" data-natural-height="418" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/33b0e3185080e1130d7848e4a94cf8bc.svg"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 269px; left: 346px; top: 397px;" data-block-id="4b5c77d10190c5e6759418c0189ad680"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; color: rgb(69, 16, 62);" data-fragment-index="0">
+<p><strong>footer.php</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 269px; height: 374px; left: 666px; top: 229px;" data-block-id="a316141b16ca3c8df787546f5a9b02be"><div class="sl-block-content fragment" style="z-index: 16;" data-fragment-index="0"><img data-natural-width="301" data-natural-height="418" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/33b0e3185080e1130d7848e4a94cf8bc.svg"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 269px; left: 666px; top: 397px;" data-block-id="c514dff469cc35dc6c946d3b4c446974"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; color: rgb(69, 16, 62);" data-fragment-index="0">
+<p><strong>sidebar.php</strong></p>
+</div></div></section><section data-background-color="#45103e" data-id="f82d454d2d616902c9f6f125c416357e">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 879px; height: 873px; left: -662px; top: -579px;" data-block-id="eb9031658b0389253695fc578785f210">
+    <div class="sl-block-style" style="z-index: 11; opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 11;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="width: 1141px; height: 1133px; left: 592px; top: -57px;" data-block-id="2c94351cbff59bf062b8659c0b2ddcba">
+    <div class="sl-block-style" style="z-index: 10; opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 10;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 801px; left: 80px; top: 39px; height: auto;" data-block-id="55f342e90e914bf59c3235e01d2a2d9a">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 12; color: rgb(255, 255, 255);">
+<h2><strong>Superpowers in the form of php, html and css!</strong></h2>
+</div>
+</div>
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 269px; height: 374px; left: 26px; top: 229px;" data-block-id="9cf52cfb2f4147c0645b5c1fb73963ab"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="301" data-natural-height="418" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/33b0e3185080e1130d7848e4a94cf8bc.svg"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 269px; left: 26px; top: 397px;" data-block-id="1ad01320a8720a8dab8190ff72354841"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(69, 16, 62);">
+<p><strong>header-custom.php</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 269px; height: 374px; left: 346px; top: 229px;" data-block-id="08d9ffbf8e9eda784644baa5e4cb378b"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="301" data-natural-height="418" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/33b0e3185080e1130d7848e4a94cf8bc.svg"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 269px; left: 346px; top: 397px;" data-block-id="989a69a23fdf41354f4e4cf14cca73a0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; color: rgb(69, 16, 62);">
+<p><strong>footer-custom.php</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 269px; height: 374px; left: 666px; top: 229px;" data-block-id="f0d2fa47c379963c415d00822efb3272"><div class="sl-block-content" style="z-index: 16;"><img data-natural-width="301" data-natural-height="418" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/33b0e3185080e1130d7848e4a94cf8bc.svg"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 269px; left: 666px; top: 397px;" data-block-id="eef6347024adae5e9add85f9b7427523"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; color: rgb(69, 16, 62);">
+<p><strong>sidebar-custom.php</strong></p>
+</div></div></section><section data-background-color="#45103e" data-id="9dcf525ea7229fc5811cddc3988c6de2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 879px; height: 873px; left: -662px; top: -579px;" data-block-id="3ba5a6a5b0d317721d66643af8eba734">
+    <div class="sl-block-style" style="z-index: 12; opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 12;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="width: 1141px; height: 1133px; left: 592px; top: -57px;" data-block-id="c1958cfc02be60dcde954e9b3f599b3c">
+    <div class="sl-block-style" style="z-index: 11; opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 11;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 269px; left: 666px; top: 393px;" data-block-id="9478de2fb9040eebcba8621b36e3f930"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(69, 16, 62);" data-fragment-index="0">
+<p><strong>sidebar.php</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 801px; left: 79px; top: 144px; height: auto;" data-block-id="3705ab2c4652555a7107cab11816ee51">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 13; color: rgb(255, 255, 255);">
+<h2><strong>How can you get started?</strong></h2>
+</div>
+</div>
+<div class="sl-block" data-block-type="text" data-block-id="d1dd22059adee27b26967556a672c827" style="height: auto; min-width: 30px; min-height: 30px; width: 801px; left: 78px; top: 245px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<ol>
+	<li>Please don't call yourself a 'Ninja', unless you're actually a ninja!</li>
+	<li>Leverage plugins like ACF or CMB2 to create custom metaboxes and fields for custom content.</li>
+	<li>You can also leverage the loop and custom post types!</li>
+	<li>Take notes, read tutorials, go to other talks, give a talk, be involved!</li>
+</ol>
+</div></div></section><section data-background-color="#ff0046" data-id="f3c1180bf84ce87b14186ca168a82897"><div class="sl-block" data-block-type="text" style="width: 456px; left: 26px; top: 22px; height: auto;" data-block-id="a7a1abe9113f89a95825f1edf4ceab5a">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 14; color: rgb(255, 255, 255);" dir="ui">
+        <h1>
+            <strong>Thank you.</strong>
+        </h1>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 423px; left: 26px; top: 229px;" data-block-id="7a0d8c6a8a4b3e3e9adb05523d2b83a7">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; color: rgb(255, 255, 255); text-align: center;" data-has-custom-html="">
+        <h2 style="text-align: left;">
+            <span style="font-size:0.9em;">
+                <strong>Dustin Leer</strong>
+            </span>
+        </h2>
+        <p style="text-align: left;">
+            <span style="font-size:1.0em;">You can find me at 
+                
+                <a href="https://dustinleer.com" style="color:#45103e;" target="_blank"><strong>dustinleer.com</strong></a>
+            </span>
+        </p>
+    </div>
+</div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 26px; top: 182px;" data-block-id="594fa323a36ab57e06c960252bee5465">
+    <div class="sl-block-content" data-line-x1="28" data-line-y1="0" data-line-x2="200" data-line-y2="0" data-line-color="#45103e" data-line-start-type="none" data-line-end-type="none" style="z-index: 16;" data-line-width="10px">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="172" height="1" viewbox="28 0 172 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="28" y1="0" x2="200" y2="0"></line><line stroke="#45103e" stroke-width="10" x1="28" y1="0" x2="200" y2="0"></line></svg>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="width: 2076px; height: 2062px; left: -556px; top: -679.5px;" data-block-id="44e23430ab7eddadf882b478b47d3efd">
+    <div class="sl-block-style" style="z-index: 10; opacity: 0.2;">
+        <div class="sl-block-content" style="z-index: 10;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/780be31697e0f1fe5615ea70b20ebd72.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="width: 1106px; height: 878px; left: 124px; top: 22px;" data-block-id="c4f7c8fd84f16fd0fddf13b58fd009b3">
+    <div class="sl-block-content" style="z-index: 13;">
+        <img data-natural-width="1427" data-natural-height="1133" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/458e57ce094ec3db43842cc4c3221b6c.png">
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 207px; left: 106px; top: 443px;" data-block-id="d851af94fd2cacceaa2bb698e6707b77">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; color: rgb(69, 16, 62); text-align: center;" data-has-custom-html="">
+        <p style="text-align: left;">
+            <strong>@leerdustin</strong>
+        </p>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 207px; left: 106px; top: 522px;" data-block-id="b91bcd6ec9b08dc58b2178479b07bcbf">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; color: rgb(69, 16, 62); text-align: center;" data-has-custom-html="">
+        <p style="text-align: left;">
+            <strong>@leerdustin</strong>
+        </p>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" data-block-id="ebfd9b351b7bed4e9a073491188058e0" style="min-width: 30px; min-height: 30px; width: 60px; height: 60px; left: 26px; top: 592px;">
+    <div class="sl-block-content" style="z-index: 20;" data-inline-svg="false">
+        <img data-natural-width="32" data-natural-height="32" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/23da8b4201cb048005f1d1916ff5bacf.svg">
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" data-block-id="2dcba7463dd1249016acb65135ea1881" style="min-width: 30px; min-height: 30px; width: 60px; height: 60px; left: 26px; top: 512px;">
+    <div class="sl-block-content" style="z-index: 12;" data-inline-svg="false">
+        <img data-natural-width="60" data-natural-height="60" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/1a0c31c1afe9bc00727ae49446ea94ad.svg">
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" data-block-id="bdf46bc0d23ee9d083a53e069fe7eb04" style="min-width: 30px; min-height: 30px; width: 60px; height: 60px; left: 26px; top: 432px;">
+    <div class="sl-block-content" style="z-index: 11;" data-inline-svg="false">
+        <img data-natural-width="60" data-natural-height="60" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/ba030e0e39b7dd5e9e75f91f8c796406.svg">
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 207px; left: 105px; top: 602px;" data-block-id="30df541a67ed014154663f970e90dd17">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 21; color: rgb(69, 16, 62); text-align: center;" data-has-custom-html="">
+        <p style="text-align: left;">
+            <strong>dustinleer</strong>
+        </p>
+    </div>
+</div></section><section data-background-color="#45103e" data-id="59f9ec6d2e1dc84ad31db7d20d9190b3">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 879px; height: 873px; left: -662px; top: -579px;" data-block-id="190b49d7ab14e23b15d852f6ceb43d3e">
+    <div class="sl-block-style" style="z-index: 11; opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 11;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="width: 1141px; height: 1133px; left: 592px; top: -57px;" data-block-id="ffa6cbe8ab78839fd5dc6116f6989b9c">
+    <div class="sl-block-style" style="z-index: 10; opacity: 0.5;">
+        <div class="sl-block-content" style="z-index: 10;" data-inline-svg="false">
+            <img data-natural-width="1767" data-natural-height="1755" style="" data-lazy-loaded="" data-src="wp-template-hiearchy-designland/7fa8c1b45363873e0427fa121e14abf5.svg">
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 269px; left: 666px; top: 393px;" data-block-id="c2ca7df3e2443c71ac7641616a1ac90d"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(69, 16, 62);" data-fragment-index="0">
+<p><strong>sidebar.php</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 801px; left: 79px; top: 253px; height: auto;" data-block-id="60aae8aaf5e04bbe2efde5cfa6393995">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 12; color: rgb(255, 255, 255);">
+<h1 style="text-align: center;"><strong>Questions or Comments?</strong></h1>
+</div>
+</div></section>
+			</div>
+		</div>
+
+		<script>
+			var SLConfig = {"deck": {"id":1077964,"slug":"wp-template-hiearchy-designland","title":"Traversing the Template Hierarchy in Designland","description":"Let's discover the power of the template hierarchy!","width":960,"height":700,"visibility":"all","published_at":"2017-09-21T21:15:50.630Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/b846b94af816d57b71ff8afaabaa8faf/thumb.jpg?1509037678","view_count":22,"user":{"id":306817,"username":"dustinleer","name":"Dustin Leer","description":"","thumbnail_url":"https://www.gravatar.com/avatar/d60fe03dc8fbd6e43ade8510dae9d353?s=140\u0026d=https%3A%2F%2Fs3.amazonaws.com%2Fstatic.slid.es%2Fimages%2Fdefault-profile-picture.png","paid":true,"pro":false,"lite":true,"team_id":null,"settings":{"id":135310,"present_controls":false,"present_upsizing":false,"present_pointer":false,"present_notes":true}},"background_transition":"slide","transition":"fade","theme_id":null,"theme_font":"montserrat","theme_color":"black-blue","auto_slide_interval":0,"comments_enabled":false,"forking_enabled":false,"rolling_links":false,"center":false,"should_loop":false,"share_notes":false,"slide_number":false,"rtl":false,"version":2,"collaborative":false,"deck_user_editor_limit":1,"data_updated_at":1509037956411,"font_typekit":null,"font_google":null,"notes":{"09c516f2a2b53d521c3f6729075a3ce9":"Next up is Hobo. It is a Mac OS X application that acts as a GUI layer on top of the Vagrant software.\n\n•It Generates it's own files types for easy sharing.\n\n•Not meant for complex systems.\n\n•Runs a Vagrant environment so it's a Vagrant manager.\n\n•I haven't seen this app in the wild","b8d5c3d14e29fcca335f92a4d652ea09":"Traversing the Template Hierarchy in Designland","b9b1abd7485e3e9e614dac6b03209659":"Who am I?\n\nMy name is Dustin Leer.\n\nI work as a front end developer at a company called Synapse Marketing Solutions.\n\nI am a formally trained designer and a self taught developer.","ec7c4394fb683731417c4adda2db1f42":"We're going to cover.\n\nChild Themes\nTemplate Heirarchy\nTemplate \u0026 CSS examples\nAnimated gifs \u0026 Dad jokes (sorry)","666d7cc1a6e2fcf7d73a797625648f92":"First up is Varying Vagrant Vagrants (aka VVV).\n• It runs on the command line.\n• You'll need Vagrant and Virtual Box installs\n• Super powerful\n• Creates virtual unbuntu boxes\n• Customizable environments\n• Can replace MAMP/XAMPP ","b8d63a16b24d814dc42695b0d1f2e0ff":"These applications have to be used in conjunction to develop with WordPress locally.\n\nMAMP-install local server enviro and is a GUI for it\n\nVHX-configs the Macs web server settings, works w/ MAMP/XAMPP/apples built in web server\n\nSequel Pro-Accesses your local \u0026 remote MySQL DB","061bdbeb7cb3c898d55c203fb686d30d":"You can't figure out VVV or the command line because its baffling.\n\nYou want something easy and simple to set up.\n\nYou are just starting to do local dev\n\nYou're looking to save time\n\n","14a1491cee7e118572095e4e44d9d4ef":"My workflow looks like this currently.\n\nDesktopServer, WordPress, ATOM or Sublime Text, GitHub \u0026 WP Migrate Pro","7f9b6c81f4d08877bbdfea693e33554d":"I use to cowboy code, we've all done it at some point or another.\n\nI've learned about Git and added GitHub into my workflow.\n\nI can spin up a complete WordPress environment in less than a minute.\n\nI now have blue prints to set up my \"perfect\"WordPress install.","4c494bd6a3ce6076370fef3b1a40a415":"Examples\n• \u003c?php get_template_part( 'template-parts/hero_single' ) ?\u003e\n    \n    - I'm calling a hero image template\n\n• get_template_part( 'template-parts/content', get_post_format() );\n \n    - This is our loop reference, it's in a template called content.php\n\n• \u003c?php get_template_part( 'template-parts/recent-posts-extended' ) ?\u003e\n\n    - This is calling a template that is built out to show recent posts, that is used before the footer on multiple pages!\n\n• Again reusing code can be extremely useful and helpful. Especially in an instance like this.","cbdc2f65d1db6924279ce1f707d5785f":"","94b1731785ceb75c719165949d18afa6":"This is the only file you need for a child theme. Seriously.\n\n• We have our Theme Name\n• And we have our Template/Parent Theme\n\nThis is still technically template hierarchy, but not in the traditional sense of WordPress template structure.\n\nIt's what I would call the gateway to template structures.","ddcd344954dadcc28fe5b9ca7d29b44c":"WordPress Basics\n\nWhat is a Child Theme?\n\nA Child Theme allows you to change small aspects of your site’s appearance yet still preserve your theme’s look and functionality.\n\nTo understand how child themes we need to understand the relationship between parent and child themes.​","632cb4fe0f17903ecb04058080747c36":"WordPress Basics\n\nWhat is a Template?\n\nA Template in WordPress is a PHP theme file that determines how content is displayed.","f1c873fd2c3c6235ea5d1656f1559d07":"WordPress has a fallback architecture!\n\nThis architecture applies not only to php files but also when working with child and parent themes.\n\nIf a WordPress can't can't find a certain file in the child theme it will look for it in the parent theme.\n\nSame goes for the template hierarchy, if WordPress can't find a certain template it will fallback to another template file.","949f85f3498be3868769958bdc8a0f61":"Ok so here we have our full width template.\n\n• First let's notice the comment at the top, it's naming our template for WordPress\n\n• Second we see our loop, this is an important part of WordPress.\n\n• But the more important part is the the loop is actually broken further down into another template.\n\n• You can make WordPress very modular by breaking down your theme into smaller components.\n\n• This can make reusing code easier","5338c937cd9e80929a915fa0b003434f":"Again we have some familiar components here.\n\n• We are identifying our template\n\n• There is the loop, it's still part of that other template.\n\n• We have our call for the sidebar too, but again it's part of another template!\n\n• Like I said these are template parts, so we are breaking down reusable code.\n","6a1b6bf8ed0401b832d1d0848915e54f":"A template partial is a piece of a template that is included as a part of another template, such as a site header.\n\nTemplate partials can be embedded in multiple templates, simplifying theme creation.\n","4cf6ee4ac4e35ac4c2efbda5c92da078":"This is a single.php file I wrote for a theme I built last year.\n\n• I have two calls for template parts\n\n• Let's talk about why I did this\n\n• hero_single was a hero section I want to continue to use on other pages so I broke it down into it's own piece to re use again and again, where needed.\n\n• same with recent-posts-extended","e00435b3aea90eec87eb83cd82b07ca9":"Common template partials include:\n\n• header.php for generating the site’s header\n• footer.php for generating the footer\n• sidebar.php for generating the sidebar\n\nWhile these template files are special-case in WordPress and apply to just one portion of a page.","b740d9f2553584fbd372c144bdccdf9c":"A template partial is a piece of a template that is included as a part of another template, such as a site header.\n\nTemplate partials can be embedded in multiple templates, simplifying theme creation. Common template partials include:\n\n• header.php for generating the site’s header\n• footer.php for generating the footer\n• sidebar.php for generating the sidebar\n\nWhile the above template files are special-case in WordPress and apply to just one portion of a page.","c9f438d65ae36854c13e976b0c9d755d":"You can completely customize, you content in templates like this!"}}};
+
+
+			// Use local fonts
+			SLConfig.fonts_url = 'lib/fonts/';
+		</script>
+
+		<script src="lib/head.min.js"></script>
+		<script src="lib/reveal.min.js"></script>
+		<script src="lib/offline.js"></script>
+
+		<!-- Initialize the presentation -->
+		<script>
+			Reveal.initialize({
+				width: 960,
+				height: 700,
+				margin: 0.05,
+
+				controls: true,
+				progress: true,
+				history: true,
+				mouseWheel: false,
+				showNotes: false,
+				slideNumber: false,
+
+				autoSlide: 0 || 0,
+				autoSlideStoppable: true,
+
+				center: false,
+				loop: false,
+				rtl: false,
+
+				transition: "fade",
+				backgroundTransition: "slide",
+
+				dependencies: [
+					{ src: 'lib/reveal-plugins/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/reveal-plugins/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/reveal-plugins/highlight/highlight.js', async: true, callback: function() { hljs.initHighlighting(); hljs.initHighlightingOnLoad(); } },
+					{ src: 'lib/reveal-plugins/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+
+		
+
+	</body>
+</html>
